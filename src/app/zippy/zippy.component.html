@@ -1,0 +1,14 @@
+<div class="card m-2">
+  <div class="card-header">
+    <div class="d-flex  justify-content-between">
+      <div>{{ title }}</div>
+      <fa
+        [name]="collapsed == true ? 'chevron-down' : 'chevron-up'"
+        (click)="toggle()"
+      ></fa>
+    </div>
+  </div>
+  <div class="card-body" *ngIf="!collapsed">
+    <ng-content></ng-content>
+  </div>
+</div>

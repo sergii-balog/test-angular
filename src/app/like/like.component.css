@@ -1,0 +1,9 @@
+.heart {
+  cursor: pointer;
+}
+.notLiked {
+  color: #ccc;
+}
+.liked {
+  color: deeppink;
+}
