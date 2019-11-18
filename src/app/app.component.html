@@ -1,7 +1,6 @@
 <h3 class="text-success">
   {{ title }}
 </h3>
-
 <ng-container *ngFor="let message of messages">
   <zippy [title]="message.title">
     <p>{{ message.text }}</p>
@@ -12,9 +11,8 @@
     ></like>
   </zippy>
 </ng-container>
-<h3 class="text-primary">
-  New course
-</h3>
-<course-form></course-form>
-<change-password-form></change-password-form>
+<div class="row">
+  <div class="col-md-6"><course-form></course-form></div>
+  <div class="col-md-6"><change-password-form></change-password-form></div>
+</div>
 <posts></posts>

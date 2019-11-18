@@ -1,4 +1,4 @@
-import { Component } from "@angular/core";
+import { Component, OnInit } from "@angular/core";
 import { HttpClient } from "@angular/common/http";
 
 @Component({
@@ -6,11 +6,12 @@ import { HttpClient } from "@angular/common/http";
   templateUrl: "./posts.component.html",
   styleUrls: ["./posts.component.css"]
 })
-export class PostsComponent {
+export class PostsComponent implements OnInit {
   posts: any[];
 
-  constructor(http: HttpClient) {
-    http
+  constructor(private http: HttpClient) {}
+  ngOnInit(): void {
+    this.http
       .get<any>("http://jsonplaceholder.typicode.com/posts", {
         observe: "response"
       })
@@ -20,7 +21,7 @@ export class PostsComponent {
         //   .map(x => console.log(`${x}: ${resp.headers.get(x)}`));
         this.posts = resp.body;
       });
-    http
+    this.http
       .post(
         "http://jsonplaceholder.typicode.com/posts",
         {},
