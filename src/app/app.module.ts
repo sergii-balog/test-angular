@@ -1,5 +1,5 @@
 import { BrowserModule } from "@angular/platform-browser";
-import { NgModule } from "@angular/core";
+import { NgModule, ErrorHandler } from "@angular/core";
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { HttpClientModule } from "@angular/common/http";
 
@@ -11,6 +11,8 @@ import { ZippyComponent } from "./zippy/zippy.component";
 import { CourseFormComponent } from "./course-form/course-form.component";
 import { ChangePasswordFormComponent } from "./change-password-form/change-password-form.component";
 import { PostsComponent } from "./posts/posts.component";
+import { AppErrorHandler } from "./common/app-error-handler";
+import { PostsService } from "./services/posts.service";
 
 @NgModule({
   declarations: [
@@ -29,7 +31,10 @@ import { PostsComponent } from "./posts/posts.component";
     ReactiveFormsModule,
     HttpClientModule
   ],
-  providers: [],
+  providers: [
+    { provide: ErrorHandler, useClass: AppErrorHandler },
+    PostsService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule {}
