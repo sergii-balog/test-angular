@@ -1,5 +1,6 @@
 import { Component, OnInit } from "@angular/core";
 import { PostsService } from "../services/posts.service";
+import * as $ from "jquery";
 
 @Component({
   selector: "posts",
@@ -17,8 +18,8 @@ export class PostsComponent implements OnInit {
       //   .map(x => console.log(`${x}: ${resp.headers.get(x)}`));
       this.posts = resp.body;
     });
-    this.service.addService({}).subscribe(resp => {
-      console.log(resp);
-    });
+    // this.service.addService({}).subscribe(resp => {
+    //   console.log(resp);
+    // });
   }
 }
