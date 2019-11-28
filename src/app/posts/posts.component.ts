@@ -17,11 +17,8 @@ export class PostsComponent implements OnInit {
     private changeReference: ChangeDetectorRef
   ) {}
   ngOnInit(): void {
+    this.loadDataTableStatically();
     this.loadDataTableDynamically();
-    // this.service.addService({}).subscribe(resp => {
-    //   console.log(resp);
-    // });
-    window["deletePost"] = this.deletePost;
   }
   public deletePost(id) {
     if (confirm("Are you sure you want to delete post?")) {
@@ -39,9 +36,13 @@ export class PostsComponent implements OnInit {
 
       const table: any = $("table");
       table.DataTable();
+      // this.service.addService({}).subscribe(resp => {
+      //   console.log(resp);
+      // });
     });
   }
   loadDataTableDynamically() {
+    window["PostsComponent"] = this;
     const table: any = $("#tableData");
 
     table.DataTable({
@@ -58,7 +59,7 @@ export class PostsComponent implements OnInit {
           data: "id",
           width: "10%",
           render: function(data, type, row) {
-            return `<button onclick="deletePost(${data})">Delete</button>`;
+            return `<button onclick="PostsComponent.deletePost(${data})">Delete</button>`;
           }
         }
       ],
