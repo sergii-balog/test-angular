@@ -1,18 +1,20 @@
-<h3 class="text-success">
-  {{ title }}
-</h3>
-<ng-container *ngFor="let message of messages">
-  <zippy [title]="message.title">
-    <p>{{ message.text }}</p>
-    <like
-      [numberOfLikes]="message.numberOfLikes"
-      [isLiked]="message.isLiked"
-      (changed)="onLikeChanged($event)"
-    ></like>
-  </zippy>
-</ng-container>
-<div class="row">
-  <div class="col-md-6"><course-form></course-form></div>
-  <div class="col-md-6"><change-password-form></change-password-form></div>
+<div class="p-3">
+  <h3 class="text-success">
+    {{ title }}
+  </h3>
+  <ng-container *ngFor="let message of messages">
+    <zippy [title]="message.title">
+      <p>{{ message.text }}</p>
+      <like
+        [numberOfLikes]="message.numberOfLikes"
+        [isLiked]="message.isLiked"
+        (changed)="onLikeChanged($event)"
+      ></like>
+    </zippy>
+  </ng-container>
+  <div class="row">
+    <div class="col-md-6"><course-form></course-form></div>
+    <div class="col-md-6"><change-password-form></change-password-form></div>
+  </div>
+  <posts></posts>
 </div>
-<posts></posts>

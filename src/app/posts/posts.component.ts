@@ -22,14 +22,13 @@ export class PostsComponent implements OnInit {
     this.deleteItem();
     this.loadDataTableStatically();
     this.loadDataTableDynamically();
-
   }
-  public deletePost(id) {
+  public deletePost(id: number) {
     if (confirm("Are you sure you want to delete post?")) {
       alert(id + " post deleted");
     }
   }
-  public deleteItem(){
+  public deleteItem() {
     this.service.deletePost(4567890).subscribe(
       resp => {
         console.log("Item deleted", resp);
@@ -37,22 +36,22 @@ export class PostsComponent implements OnInit {
       (error: AppError) => {
         if (error instanceof NotFoundError) {
           alert("This item has already been deleted.");
-        } else throw error;
+        } else {
+          throw error;
+        }
       }
     );
   }
   loadDataTableStatically() {
-    this.service.getPosts().subscribe(
-      resp => {
-        // resp.headers
-        //   .keys()
-        //   .map(x => console.log(`${x}: ${resp.headers.get(x)}`));
-        this.posts = resp.body;
-        this.changeReference.detectChanges();
-        const table: any = $("table");
-        table.DataTable();
-      }
-    );
+    this.service.getPosts().subscribe(resp => {
+      // resp.headers
+      //   .keys()
+      //   .map(x => console.log(`${x}: ${resp.headers.get(x)}`));
+      this.posts = resp.body;
+      this.changeReference.detectChanges();
+      const table: any = $("table");
+      table.DataTable();
+    });
   }
   loadDataTableDynamically() {
     window["PostsComponent"] = this;

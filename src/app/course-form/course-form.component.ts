@@ -11,7 +11,7 @@ export class CourseFormComponent {
     { id: 2, title: "Art" },
     { id: 3, title: "Languages" }
   ];
-  onSubmit(value) {
+  onSubmit(value: any) {
     alert(JSON.stringify(value));
   }
 }
