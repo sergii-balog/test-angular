@@ -1,12 +1,13 @@
 import { ErrorHandler } from "@angular/core";
 import { HttpErrorResponse } from "@angular/common/http";
+import {AppError} from './errors/app-error';
 
 export class AppErrorHandler implements ErrorHandler {
   handleError(error: any): void {
-    if (error instanceof HttpErrorResponse) {
-      alert(`Http error: ${error.message}`);
+    if (error instanceof AppError) {
+     alert("An unexpected error occured: " + error.originalError.message);
     }
-    alert("Unexpected error occured.");
-    console.log(error);
+    else alert("Unexpected error occured.");
+    console.log("Unexpected error occured.", error);
   }
 }

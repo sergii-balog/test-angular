@@ -3,6 +3,8 @@ import { PostsService } from "../services/posts.service";
 import * as $ from "jquery";
 import "datatables.net";
 import "datatables.net-bs4";
+import { AppError } from "../common/errors/app-error";
+import { NotFoundError } from "../common/errors/not-found-error";
 
 @Component({
   selector: "posts",
@@ -17,29 +19,40 @@ export class PostsComponent implements OnInit {
     private changeReference: ChangeDetectorRef
   ) {}
   ngOnInit(): void {
+    this.deleteItem();
     this.loadDataTableStatically();
     this.loadDataTableDynamically();
+
   }
   public deletePost(id) {
     if (confirm("Are you sure you want to delete post?")) {
       alert(id + " post deleted");
     }
   }
+  public deleteItem(){
+    this.service.deletePost(4567890).subscribe(
+      resp => {
+        console.log("Item deleted", resp);
+      },
+      (error: AppError) => {
+        if (error instanceof NotFoundError) {
+          alert("This item has already been deleted.");
+        } else throw error;
+      }
+    );
+  }
   loadDataTableStatically() {
-    this.service.getPosts().subscribe(resp => {
-      // resp.headers
-      //   .keys()
-      //   .map(x => console.log(`${x}: ${resp.headers.get(x)}`));
-      this.posts = resp.body;
-
-      this.changeReference.detectChanges();
-
-      const table: any = $("table");
-      table.DataTable();
-      // this.service.addService({}).subscribe(resp => {
-      //   console.log(resp);
-      // });
-    });
+    this.service.getPosts().subscribe(
+      resp => {
+        // resp.headers
+        //   .keys()
+        //   .map(x => console.log(`${x}: ${resp.headers.get(x)}`));
+        this.posts = resp.body;
+        this.changeReference.detectChanges();
+        const table: any = $("table");
+        table.DataTable();
+      }
+    );
   }
   loadDataTableDynamically() {
     window["PostsComponent"] = this;

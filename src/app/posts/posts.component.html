@@ -1,35 +1,57 @@
 <h3 class="text-warning">Posts</h3>
-<div class="row d-none">
-  <ng-container *ngFor="let post of posts">
-    <div class="col-md-4">
-      <zippy [title]="post.title">
-        <p>{{ post.body }}</p>
-      </zippy>
+<ul class="nav nav-tabs" id="myTab" role="tablist">
+  <li class="nav-item">
+    <a class="nav-link" id="zippy-tab" data-toggle="tab" href="#zippy" role="tab" aria-controls="zippy" aria-selected="false">Zippy</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" id="static-tab" data-toggle="tab" href="#static" role="tab" aria-controls="static" aria-selected="false">Static</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link active" id="dynamic-tab" data-toggle="tab" href="#dynamic" role="tab" aria-controls="dynamic" aria-selected="true">Dynamic</a>
+  </li>
+</ul>
+<div class="tab-content" id="myTabContent">
+  <div class="tab-pane fade" id="zippy" role="tabpanel" aria-labelledby="zippy-tab">
+    <div class="row">
+      <ng-container *ngFor="let post of posts">
+        <div class="col-md-4">
+          <zippy [title]="post.title">
+            <p>{{ post.body }}</p>
+          </zippy>
+        </div>
+      </ng-container>
     </div>
-  </ng-container>
+  </div>
+  <div class="tab-pane fade" id="static" role="tabpanel" aria-labelledby="static-tab">
+    <table class="table table-striped table-hover w-100" cellspacing="0">
+      <thead>
+        <tr>
+          <th>Title</th>
+          <th>Body</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let post of posts">
+          <td>{{ post.title }}</td>
+          <td>{{ post.body }}</td>
+          <td><button (click)="deletePost(post.id)">Delete</button></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="tab-pane fade show active" id="dynamic" role="tabpanel" aria-labelledby="dynamic-tab">
+    <table class="table table-striped table-hover" cellspacing="0" id="tableData">
+      <thead>
+        <tr>
+          <th>Title</th>
+          <th>Body</th>
+          <th></th>
+        </tr>
+      </thead>
+    </table>
+  </div>
 </div>
-<table class="table table-striped table-hover" cellspacing="0">
-  <thead>
-    <tr>
-      <th>Title</th>
-      <th>Body</th>
-      <th></th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr *ngFor="let post of posts">
-      <td>{{ post.title }}</td>
-      <td>{{ post.body }}</td>
-      <td><button (click)="deletePost(post.id)">Delete</button></td>
-    </tr>
-  </tbody>
-</table>
-<table class="table table-striped table-hover" cellspacing="0" id="tableData">
-  <thead>
-    <tr>
-      <th>Title</th>
-      <th>Body</th>
-      <th></th>
-    </tr>
-  </thead>
-</table>
+
+
+
