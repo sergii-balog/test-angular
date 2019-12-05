@@ -29,7 +29,7 @@ export class PostsComponent implements OnInit {
     }
   }
   public deleteItem() {
-    this.service.deletePost(4567890).subscribe(
+    this.service.delete(4567890).subscribe(
       resp => {
         console.log("Item deleted", resp);
       },
@@ -43,7 +43,7 @@ export class PostsComponent implements OnInit {
     );
   }
   loadDataTableStatically() {
-    this.service.getPosts().subscribe(resp => {
+    this.service.getAll().subscribe(resp => {
       // resp.headers
       //   .keys()
       //   .map(x => console.log(`${x}: ${resp.headers.get(x)}`));
