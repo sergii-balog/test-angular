@@ -5,6 +5,7 @@ import "datatables.net";
 import "datatables.net-bs4";
 import { AppError } from "../common/errors/app-error";
 import { NotFoundError } from "../common/errors/not-found-error";
+import { IPost } from "./../models/post";
 
 @Component({
   selector: "posts",
@@ -27,7 +28,7 @@ export class PostsComponent implements OnInit {
       const postToUpdate = this.posts.find(x => x.id === id);
       this.service.update(postToUpdate).subscribe(
         post => {
-          console.log("Item " + id + " updated", post);
+          console.log("Item " + post.id + " updated", post);
         },
         (error: AppError) => {
           if (error instanceof NotFoundError) {
@@ -53,7 +54,7 @@ export class PostsComponent implements OnInit {
   }
   private formatStaticTable(posts: any) {
     this.posts = posts;
-    // this.changeReference.detectChanges();
+    this.changeReference.detectChanges();
     const table: any = $("table");
     table.DataTable();
   }

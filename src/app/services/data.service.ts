@@ -6,39 +6,41 @@ import { map } from "rxjs/operators";
 import { AppError } from "../common/errors/app-error";
 import { NotFoundError } from "../common/errors/not-found-error";
 import { BadInput } from "../common/errors/bad-input-error";
+import { IIDentifier } from "../models/identifier";
 
-export class DataService {
+export class DataService<T extends IIDentifier> {
   constructor(private url: string, private http: HttpClient) {}
 
-  public getAll(): Observable<any> {
+  public getAll(): Observable<T> {
     return this.http
-      .get<any>(this.url, {
+      .get<T>(this.url, {
         observe: "response"
       })
       .pipe(map(response => response.body))
       .pipe(catchError(this.handleError));
   }
-  public create(resource: any): Observable<any> {
+  public create(resource: any): Observable<T> {
     return this.http
-      .post(this.url, resource, {
+      .post<T>(this.url, resource, {
         observe: "response"
       })
       .pipe(map(response => response.body))
       .pipe(catchError(this.handleError));
   }
-  public update(resource: any): Observable<any> {
+  public update(resource: T): Observable<T> {
     return this.http
-      .put(this.url + "/" + resource.id, resource, {
+      .put<T>(this.url + "/" + resource.id, resource, {
         observe: "response"
       })
       .pipe(map(response => response.body))
       .pipe(catchError(this.handleError));
   }
-  public delete(id: number): Observable<any> {
+  public delete(id: number): Observable<T> {
     return this.http
-      .delete(this.url + "/" + id, {
+      .delete<T>(this.url + "/" + id, {
         observe: "response"
       })
+      .pipe(map(response => response.body))
       .pipe(catchError(this.handleError));
   }
   private handleError(error: Response) {
