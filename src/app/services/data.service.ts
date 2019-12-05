@@ -19,7 +19,7 @@ export class DataService<T extends IIDentifier> {
       .pipe(map(response => response.body))
       .pipe(catchError(this.handleError));
   }
-  public create(resource: any): Observable<T> {
+  public create(resource: T): Observable<T> {
     return this.http
       .post<T>(this.url, resource, {
         observe: "response"

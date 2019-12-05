@@ -52,8 +52,8 @@ export class PostsComponent implements OnInit {
         }
       );
       this.posts = this.posts.filter(x => x.id !== id);
-      //this.changeReference.detectChanges();
-      this.staticTable.rows().invalidate("data");
+      this.staticTable.destroy();
+      this.changeReference.detectChanges();
       this.staticTable = $("#tableDataStatic").DataTable();
       this.staticTable.draw(true);
     }
@@ -64,9 +64,7 @@ export class PostsComponent implements OnInit {
     this.staticTable = $("#tableDataStatic").DataTable();
   }
   private loadDataTableStatically() {
-    this.service
-      .getAll()
-      .subscribe(posts => this.formatStaticTable(posts.slice(1, 5)));
+    this.service.getAll().subscribe(posts => this.formatStaticTable(posts));
   }
   private loadDataTableDynamically() {
     window["PostsComponent"] = this;
