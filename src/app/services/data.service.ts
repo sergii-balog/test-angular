@@ -11,9 +11,9 @@ import { IIDentifier } from "../models/identifier";
 export class DataService<T extends IIDentifier> {
   constructor(private url: string, private http: HttpClient) {}
 
-  public getAll(): Observable<T> {
+  public getAll(): Observable<T[]> {
     return this.http
-      .get<T>(this.url, {
+      .get<T[]>(this.url, {
         observe: "response"
       })
       .pipe(map(response => response.body))

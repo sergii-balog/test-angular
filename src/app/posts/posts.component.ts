@@ -6,6 +6,7 @@ import "datatables.net-bs4";
 import { AppError } from "../common/errors/app-error";
 import { NotFoundError } from "../common/errors/not-found-error";
 import { IPost } from "./../models/post";
+import { DataService } from "./../services/data.service";
 
 @Component({
   selector: "posts",
@@ -13,8 +14,8 @@ import { IPost } from "./../models/post";
   styleUrls: ["./posts.component.css"]
 })
 export class PostsComponent implements OnInit {
-  posts: any[];
-
+  posts: IPost[] = [];
+  staticTable: any;
   constructor(
     private service: PostsService,
     private changeReference: ChangeDetectorRef
@@ -50,16 +51,22 @@ export class PostsComponent implements OnInit {
           }
         }
       );
+      this.posts = this.posts.filter(x => x.id !== id);
+      //this.changeReference.detectChanges();
+      this.staticTable.rows().invalidate("data");
+      this.staticTable = $("#tableDataStatic").DataTable();
+      this.staticTable.draw(true);
     }
   }
-  private formatStaticTable(posts: any) {
+  private formatStaticTable(posts: IPost[]) {
     this.posts = posts;
     this.changeReference.detectChanges();
-    const table: any = $("table");
-    table.DataTable();
+    this.staticTable = $("#tableDataStatic").DataTable();
   }
   private loadDataTableStatically() {
-    this.service.getAll().subscribe(posts => this.formatStaticTable(posts));
+    this.service
+      .getAll()
+      .subscribe(posts => this.formatStaticTable(posts.slice(1, 5)));
   }
   private loadDataTableDynamically() {
     window["PostsComponent"] = this;
