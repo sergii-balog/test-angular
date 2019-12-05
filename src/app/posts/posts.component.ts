@@ -19,41 +19,48 @@ export class PostsComponent implements OnInit {
     private changeReference: ChangeDetectorRef
   ) {}
   ngOnInit(): void {
-    this.deleteItem();
     this.loadDataTableStatically();
     this.loadDataTableDynamically();
   }
   public deletePost(id: number) {
     if (confirm("Are you sure you want to delete post?")) {
-      alert(id + " post deleted");
+      const postToUpdate = this.posts.find(x => x.id === id);
+      this.service.update(postToUpdate).subscribe(
+        post => {
+          console.log("Item " + id + " updated", post);
+        },
+        (error: AppError) => {
+          if (error instanceof NotFoundError) {
+            alert("This item has already been deleted.");
+          } else {
+            throw error;
+          }
+        }
+      );
+      this.service.delete(id).subscribe(
+        resp => {
+          console.log("Item " + id + " deleted", resp);
+        },
+        (error: AppError) => {
+          if (error instanceof NotFoundError) {
+            alert("This item has already been deleted.");
+          } else {
+            throw error;
+          }
+        }
+      );
     }
   }
-  public deleteItem() {
-    this.service.delete(4567890).subscribe(
-      resp => {
-        console.log("Item deleted", resp);
-      },
-      (error: AppError) => {
-        if (error instanceof NotFoundError) {
-          alert("This item has already been deleted.");
-        } else {
-          throw error;
-        }
-      }
-    );
+  private formatStaticTable(posts: any) {
+    this.posts = posts;
+    // this.changeReference.detectChanges();
+    const table: any = $("table");
+    table.DataTable();
   }
-  loadDataTableStatically() {
-    this.service.getAll().subscribe(resp => {
-      // resp.headers
-      //   .keys()
-      //   .map(x => console.log(`${x}: ${resp.headers.get(x)}`));
-      this.posts = resp.body;
-      this.changeReference.detectChanges();
-      const table: any = $("table");
-      table.DataTable();
-    });
+  private loadDataTableStatically() {
+    this.service.getAll().subscribe(posts => this.formatStaticTable(posts));
   }
-  loadDataTableDynamically() {
+  private loadDataTableDynamically() {
     window["PostsComponent"] = this;
     const table: any = $("#tableData");
 
