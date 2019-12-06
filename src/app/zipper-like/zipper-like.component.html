@@ -1,0 +1,13 @@
+<h3 class="text-success">
+  {{ title }}
+</h3>
+<ng-container *ngFor="let message of messages">
+  <zippy [title]="message.title">
+    <p>{{ message.text }}</p>
+    <like
+      [numberOfLikes]="message.numberOfLikes"
+      [isLiked]="message.isLiked"
+      (changed)="onLikeChanged($event)"
+    ></like>
+  </zippy>
+</ng-container>

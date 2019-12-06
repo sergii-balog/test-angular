@@ -1,0 +1,52 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <a class="navbar-brand" routerLink="/">Angular Demo</a>
+  <button
+    class="navbar-toggler"
+    type="button"
+    data-toggle="collapse"
+    data-target="#navbarNavAltMarkup"
+    aria-controls="navbarNavAltMarkup"
+    aria-expanded="false"
+    aria-label="Toggle navigation"
+  >
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+    <div class="navbar-nav">
+      <a
+        class="nav-item nav-link"
+        routerLink="/"
+        routerLinkActive="active"
+        [routerLinkActiveOptions]="{ exact: true }"
+        >Home</a
+      >
+      <a
+        class="nav-item nav-link"
+        routerLink="/followers"
+        routerLinkActive="active"
+        >Followers</a
+      >
+      <a class="nav-item nav-link" routerLink="/posts" routerLinkActive="active"
+        >Posts</a
+      >
+      <a class="nav-item nav-link" routerLink="/forms" routerLinkActive="active"
+        >Forms</a
+      >
+      <a
+        class="nav-item nav-link"
+        routerLink="/zipper-like"
+        routerLinkActive="active"
+        >Zipper and like</a
+      >
+      <a class="nav-item nav-link" routerLink="/blog" routerLinkActive="active"
+        >Blog</a
+      >
+      <a
+        class="nav-item nav-link"
+        routerLink="/broken-link"
+        routerLinkActive="active"
+        >Broken link</a
+      >
+    </div>
+  </div>
+</nav>
