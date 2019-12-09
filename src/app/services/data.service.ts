@@ -9,7 +9,10 @@ import { BadInput } from "../common/errors/bad-input-error";
 import { IIDentifier } from "../models/identifier";
 
 export class DataService<T extends IIDentifier> {
-  constructor(private url: string, private http: HttpClient) {}
+  serviceUrl: string;
+  constructor(private url: string, private http: HttpClient) {
+    this.serviceUrl = url;
+  }
 
   public getAll(): Observable<T[]> {
     return this.http

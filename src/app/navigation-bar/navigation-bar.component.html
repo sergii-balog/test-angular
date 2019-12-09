@@ -12,7 +12,7 @@
     <span class="navbar-toggler-icon"></span>
   </button>
   <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-    <div class="navbar-nav">
+    <div class="navbar-nav mr-auto">
       <a
         class="nav-item nav-link"
         routerLink="/"
@@ -46,6 +46,25 @@
         routerLink="/broken-link"
         routerLinkActive="active"
         >Broken link</a
+      >
+    </div>
+    <div class="navbar-nav">
+      <a
+        *ngIf="!authService.isLoggedIn()"
+        class="nav-item nav-link"
+        routerLink="/login"
+        routerLinkActive="active"
+        >Login</a
+      >
+      <div class="nav-item nav-link" *ngIf="authService.isLoggedIn()">
+        Hello, {{ userName() }} |
+      </div>
+      <a
+        *ngIf="authService.isLoggedIn()"
+        class="nav-item nav-link"
+        (click)="logout()"
+        href="#"
+        >Logout</a
       >
     </div>
   </div>

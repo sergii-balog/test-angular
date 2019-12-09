@@ -23,6 +23,7 @@ import { ZipperLikeComponent } from "./zipper-like/zipper-like.component";
 import { FormsPageComponent } from "./forms-page/forms-page.component";
 import { BlogComponent } from "./blog/blog.component";
 import { BlogArticleComponent } from "./blog-article/blog-article.component";
+import { LoginFormComponent } from "./login-form/login-form.component";
 
 @NgModule({
   declarations: [
@@ -39,7 +40,8 @@ import { BlogArticleComponent } from "./blog-article/blog-article.component";
     ZipperLikeComponent,
     FormsPageComponent,
     BlogComponent,
-    BlogArticleComponent
+    BlogArticleComponent,
+    LoginFormComponent
   ],
   imports: [
     BrowserModule,
@@ -49,13 +51,18 @@ import { BlogArticleComponent } from "./blog-article/blog-article.component";
     ReactiveFormsModule,
     HttpClientModule,
     RouterModule.forRoot([
+      {
+        path: "",
+        component: HomePageComponent
+      },
       { path: "followers", component: GithubFollowersComponent },
       { path: "posts", component: PostsComponent },
       { path: "zipper-like", component: ZipperLikeComponent },
       { path: "forms", component: FormsPageComponent },
       { path: "blog/:year/:month", component: BlogArticleComponent },
       { path: "blog", component: BlogComponent },
-      { path: "", component: HomePageComponent },
+      { path: "login", component: LoginFormComponent },
+      { path: "**", component: NotFoundComponent },
       { path: "**", component: NotFoundComponent }
     ])
   ],
