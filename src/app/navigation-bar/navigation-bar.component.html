@@ -47,6 +47,20 @@
         routerLinkActive="active"
         >Broken link</a
       >
+      <a
+        *ngIf="authService.isLoggedIn()"
+        class="nav-item nav-link"
+        routerLink="/ideas"
+        routerLinkActive="active"
+        >Ideas</a
+      >
+      <a
+        *ngIf="authService.isLoggedIn() && authService.isAdmin"
+        class="nav-item nav-link"
+        routerLink="/users"
+        routerLinkActive="active"
+        >Users</a
+      >
     </div>
     <div class="navbar-nav">
       <a

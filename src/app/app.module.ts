@@ -24,6 +24,11 @@ import { FormsPageComponent } from "./forms-page/forms-page.component";
 import { BlogComponent } from "./blog/blog.component";
 import { BlogArticleComponent } from "./blog-article/blog-article.component";
 import { LoginFormComponent } from "./login-form/login-form.component";
+import { IdeasComponent } from "./ideas/ideas.component";
+import { AuthGuard } from "./services/auth-guard.service";
+import { AccessDeniedComponent } from "./access-denied/access-denied.component";
+import { AdminGuard } from "./services/admin-guard.service";
+import { UsersComponent } from "./users/users.component";
 
 @NgModule({
   declarations: [
@@ -41,7 +46,10 @@ import { LoginFormComponent } from "./login-form/login-form.component";
     FormsPageComponent,
     BlogComponent,
     BlogArticleComponent,
-    LoginFormComponent
+    LoginFormComponent,
+    IdeasComponent,
+    AccessDeniedComponent,
+    UsersComponent
   ],
   imports: [
     BrowserModule,
@@ -62,7 +70,23 @@ import { LoginFormComponent } from "./login-form/login-form.component";
       { path: "blog/:year/:month", component: BlogArticleComponent },
       { path: "blog", component: BlogComponent },
       { path: "login", component: LoginFormComponent },
-      { path: "**", component: NotFoundComponent },
+      {
+        path: "ideas",
+        component: IdeasComponent,
+        canActivate: [AuthGuard]
+      },
+      {
+        path: "users",
+        canActivate: [AuthGuard],
+        children: [
+          {
+            path: "",
+            component: UsersComponent,
+            canActivate: [AdminGuard]
+          }
+        ]
+      },
+      { path: "access-denied", component: AccessDeniedComponent },
       { path: "**", component: NotFoundComponent }
     ])
   ],

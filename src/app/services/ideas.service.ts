@@ -1,14 +1,13 @@
 import { Injectable } from "@angular/core";
 import { DataService } from "./data.service";
 import { HttpClient } from "@angular/common/http";
-import { IFollower } from "../models/follower";
 import { AuthService } from "./auth.service";
 
 @Injectable({
   providedIn: "root"
 })
-export class GithubFollowersService extends DataService<IFollower> {
+export class IdeasService extends DataService<any> {
   constructor(http: HttpClient, authService: AuthService) {
-    super("https://api.github.com/users/sbal323/followers", http, authService);
+    super("https://feedback.lanteria.com/ideas", http, authService);
   }
 }

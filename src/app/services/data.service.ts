@@ -1,4 +1,4 @@
-import { HttpClient } from "@angular/common/http";
+import { HttpClient, HttpHeaders } from "@angular/common/http";
 import { Observable } from "rxjs";
 import { catchError } from "rxjs/operators";
 import { throwError } from "rxjs";
@@ -7,17 +7,26 @@ import { AppError } from "../common/errors/app-error";
 import { NotFoundError } from "../common/errors/not-found-error";
 import { BadInput } from "../common/errors/bad-input-error";
 import { IIDentifier } from "../models/identifier";
+import { AuthService } from "./auth.service";
 
 export class DataService<T extends IIDentifier> {
   serviceUrl: string;
-  constructor(private url: string, private http: HttpClient) {
+
+  constructor(
+    private url: string,
+    private http: HttpClient,
+    private authService: AuthService
+  ) {
     this.serviceUrl = url;
   }
 
   public getAll(): Observable<T[]> {
     return this.http
       .get<T[]>(this.url, {
-        observe: "response"
+        observe: "response",
+        headers: new HttpHeaders({
+          Authorization: "Bearer " + this.authService.currentUser.token
+        })
       })
       .pipe(map(response => response.body))
       .pipe(catchError(this.handleError));
