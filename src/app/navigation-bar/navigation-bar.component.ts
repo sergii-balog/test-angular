@@ -8,7 +8,10 @@ import { Router } from "@angular/router";
   styleUrls: ["./navigation-bar.component.css"]
 })
 export class NavigationBarComponent implements OnInit {
-  constructor(private router: Router, private authService: AuthService) {}
+  authService: AuthService;
+  constructor(private router: Router, private service: AuthService) {
+    this.authService = service;
+  }
 
   ngOnInit() {}
   public userName() {
