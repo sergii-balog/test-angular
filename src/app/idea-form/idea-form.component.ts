@@ -30,13 +30,19 @@ export class IdeaFormComponent implements OnInit {
     this.idea.id = +params.get("id");
     if (this.idea.id) {
       this.service.getIdea(this.idea).subscribe(resp => {
-        if (resp.isOk) {
+        if (resp.isOk && resp.idea) {
           this.idea.title = resp.idea.title;
           this.idea.description = resp.idea.description;
           this.idea.module = resp.idea.module;
           this.idea.active = resp.idea.active;
         } else {
-          Swal.fire("Error!", resp.errorMessage, "warning");
+          Swal.fire(
+            "Error!",
+            resp.isOk ? "Can't get idea" : resp.errorMessage,
+            "warning"
+          ).then(result => {
+            this.router.navigate(["/ideas"]);
+          });
         }
       });
     }

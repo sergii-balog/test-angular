@@ -75,8 +75,22 @@ import { IdeaFormComponent } from "./idea-form/idea-form.component";
       { path: "blog/:year/:month", component: BlogArticleComponent },
       { path: "blog", component: BlogComponent },
       { path: "login", component: LoginFormComponent },
-      { path: "new-idea", component: IdeaFormComponent },
-      { path: "idea/:id", component: IdeaFormComponent },
+      {
+        path: "new-idea",
+        component: IdeaFormComponent,
+        canActivate: [AuthGuard]
+      },
+      {
+        path: "idea/:id",
+        canActivate: [AuthGuard],
+        children: [
+          {
+            path: "",
+            component: IdeaFormComponent,
+            canActivate: [AdminGuard]
+          }
+        ]
+      },
       {
         path: "ideas",
         component: IdeasComponent,
