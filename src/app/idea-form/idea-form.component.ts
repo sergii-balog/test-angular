@@ -17,7 +17,7 @@ export class IdeaFormComponent implements OnInit {
     "Learning",
     "Performance"
   ];
-  idea: Idea = { active: true };
+  idea: Idea = { active: true } as Idea;
 
   constructor(
     private router: Router,
