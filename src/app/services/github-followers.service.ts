@@ -8,7 +8,7 @@ import { AuthService } from "./auth.service";
   providedIn: "root"
 })
 export class GithubFollowersService extends DataService<IFollower> {
-  constructor(http: HttpClient, authService: AuthService) {
-    super("https://api.github.com/users/sbal323/followers", http, authService);
+  constructor(http: HttpClient) {
+    super("https://api.github.com/users/sbal323/followers", http);
   }
 }

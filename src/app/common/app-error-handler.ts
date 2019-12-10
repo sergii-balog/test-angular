@@ -1,12 +1,13 @@
 import { ErrorHandler } from "@angular/core";
 import { AppError } from "./errors/app-error";
+import Swal from "sweetalert2";
 
 export class AppErrorHandler implements ErrorHandler {
   handleError(error: any): void {
     if (error instanceof AppError) {
-      alert("An unexpected error occured: " + error.originalError.message);
+      Swal.fire("Unexpected error!", error.originalError.message, "error");
     } else {
-      alert("Unexpected error occured.");
+      Swal.fire("Unexpected error!", "Unexpected error occured.", "error");
     }
     console.log("Unexpected error occured.", error);
   }

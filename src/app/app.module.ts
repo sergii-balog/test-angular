@@ -29,6 +29,8 @@ import { AuthGuard } from "./services/auth-guard.service";
 import { AccessDeniedComponent } from "./access-denied/access-denied.component";
 import { AdminGuard } from "./services/admin-guard.service";
 import { UsersComponent } from "./users/users.component";
+import { ShortStringPipe } from "./pipes/short-string.pipe";
+import { IdeaFormComponent } from "./idea-form/idea-form.component";
 
 @NgModule({
   declarations: [
@@ -49,9 +51,12 @@ import { UsersComponent } from "./users/users.component";
     LoginFormComponent,
     IdeasComponent,
     AccessDeniedComponent,
-    UsersComponent
+    UsersComponent,
+    ShortStringPipe,
+    IdeaFormComponent
   ],
   imports: [
+    AngularFontAwesomeModule,
     BrowserModule,
     AppRoutingModule,
     AngularFontAwesomeModule,
@@ -70,6 +75,8 @@ import { UsersComponent } from "./users/users.component";
       { path: "blog/:year/:month", component: BlogArticleComponent },
       { path: "blog", component: BlogComponent },
       { path: "login", component: LoginFormComponent },
+      { path: "new-idea", component: IdeaFormComponent },
+      { path: "idea/:id", component: IdeaFormComponent },
       {
         path: "ideas",
         component: IdeasComponent,

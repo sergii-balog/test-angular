@@ -12,21 +12,14 @@ import { AuthService } from "./auth.service";
 export class DataService<T extends IIDentifier> {
   serviceUrl: string;
 
-  constructor(
-    private url: string,
-    private http: HttpClient,
-    private authService: AuthService
-  ) {
+  constructor(private url: string, private http: HttpClient) {
     this.serviceUrl = url;
   }
 
   public getAll(): Observable<T[]> {
     return this.http
       .get<T[]>(this.url, {
-        observe: "response",
-        headers: new HttpHeaders({
-          Authorization: "Bearer " + this.authService.currentUser.token
-        })
+        observe: "response"
       })
       .pipe(map(response => response.body))
       .pipe(catchError(this.handleError));

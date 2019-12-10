@@ -1,0 +1,99 @@
+<h3 class="text-primary" *ngIf="!idea.id">
+  New idea
+</h3>
+<h3 class="text-primary" *ngIf="idea.id">
+  Edit idea
+</h3>
+<form #ideaForm="ngForm" (ngSubmit)="onSubmit(ideaForm.value)">
+  <div class="form-group">
+    <label for="courseName">Title</label>
+    <input
+      ngModel
+      name="title"
+      id="title"
+      [(ngModel)]="idea.title"
+      type="text"
+      class="form-control"
+      required
+    />
+    <div
+      class="alert alert-danger"
+      *ngIf="
+        ideaForm.form.controls.title?.touched &&
+        !ideaForm.form.controls.title?.valid
+      "
+    >
+      <div *ngIf="ideaForm.form.controls.title?.errors.required">
+        Title is required
+      </div>
+    </div>
+  </div>
+  <div class="form-group">
+    <label for="courseCategory">Module</label>
+    <select
+      name="module"
+      id="module"
+      [(ngModel)]="idea.module"
+      required
+      class="form-control"
+    >
+      <option></option>
+      <option
+        *ngFor="let category of categories"
+        [value]="category"
+        [selected]="category === idea.module"
+        >{{ category }}</option
+      >
+    </select>
+    <div
+      class="alert alert-danger"
+      *ngIf="
+        ideaForm.form.controls.module?.touched &&
+        !ideaForm.form.controls.module?.valid
+      "
+    >
+      <div *ngIf="ideaForm.form.controls.module?.errors.required">
+        Module is required
+      </div>
+    </div>
+  </div>
+  <div class="form-group form-check" *ngIf="idea.id">
+    <input
+      [(ngModel)]="idea.active"
+      type="checkbox"
+      class="form-check-input"
+      id="active"
+      name="active"
+    />
+    <label class="form-check-label" for="active">Active</label>
+  </div>
+  <div class="form-group">
+    <label for="courseName">Description</label>
+    <textarea
+      ngModel
+      name="description"
+      id="description"
+      [(ngModel)]="idea.description"
+      rows="5"
+      class="form-control"
+      required
+    ></textarea>
+    <div
+      class="alert alert-danger"
+      *ngIf="
+        ideaForm.form.controls.description?.touched &&
+        !ideaForm.form.controls.description?.valid
+      "
+    >
+      <div *ngIf="ideaForm.form.controls.description?.errors.required">
+        Description is required
+      </div>
+    </div>
+  </div>
+  <button class="btn btn-primary mr-2" [disabled]="ideaForm.invalid">
+    Submit
+  </button>
+  <button class="btn btn-secondary" (click)="onCancel()">
+    Cancel
+  </button>
+</form>

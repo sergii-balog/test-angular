@@ -54,14 +54,14 @@ export class PostsComponent implements OnInit {
       this.posts = this.posts.filter(x => x.id !== id);
       this.staticTable.destroy();
       this.changeReference.detectChanges();
-      this.staticTable = $("#tableDataStatic").DataTable();
+      this.staticTable = ($("#tableDataStatic") as any).DataTable();
       this.staticTable.draw(true);
     }
   }
   private formatStaticTable(posts: IPost[]) {
     this.posts = posts;
     this.changeReference.detectChanges();
-    this.staticTable = $("#tableDataStatic").DataTable();
+    this.staticTable = ($("#tableDataStatic") as any).DataTable();
   }
   private loadDataTableStatically() {
     this.service.getAll().subscribe(posts => this.formatStaticTable(posts));
