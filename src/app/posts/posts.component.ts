@@ -83,7 +83,7 @@ export class PostsComponent implements OnInit {
         {
           data: "id",
           width: "10%",
-          render: function(data, type, row) {
+          render(data, type, row) {
             return `<button onclick="PostsComponent.deletePost(${data})">Delete</button>`;
           }
         }

@@ -1,8 +1,8 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { async, ComponentFixture, TestBed } from "@angular/core/testing";
 
-import { ZipperLikeComponent } from './zipper-like.component';
+import { ZipperLikeComponent } from "./zipper-like.component";
 
-describe('ZipperLikeComponent', () => {
+describe("ZipperLikeComponent", () => {
   let component: ZipperLikeComponent;
   let fixture: ComponentFixture<ZipperLikeComponent>;
 
@@ -19,7 +19,7 @@ describe('ZipperLikeComponent', () => {
     fixture.detectChanges();
   });
 
-  it('should create', () => {
+  it("should create", () => {
     expect(component).toBeTruthy();
   });
 });

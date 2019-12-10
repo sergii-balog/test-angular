@@ -1,8 +1,8 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { async, ComponentFixture, TestBed } from "@angular/core/testing";
 
-import { FormsPageComponent } from './forms-page.component';
+import { FormsPageComponent } from "./forms-page.component";
 
-describe('FormsPageComponent', () => {
+describe("FormsPageComponent", () => {
   let component: FormsPageComponent;
   let fixture: ComponentFixture<FormsPageComponent>;
 
@@ -19,7 +19,7 @@ describe('FormsPageComponent', () => {
     fixture.detectChanges();
   });
 
-  it('should create', () => {
+  it("should create", () => {
     expect(component).toBeTruthy();
   });
 });

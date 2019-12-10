@@ -1,8 +1,8 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { async, ComponentFixture, TestBed } from "@angular/core/testing";
 
-import { IdeaFormComponent } from './idea-form.component';
+import { IdeaFormComponent } from "./idea-form.component";
 
-describe('IdeaFormComponent', () => {
+describe("IdeaFormComponent", () => {
   let component: IdeaFormComponent;
   let fixture: ComponentFixture<IdeaFormComponent>;
 
@@ -19,7 +19,7 @@ describe('IdeaFormComponent', () => {
     fixture.detectChanges();
   });
 
-  it('should create', () => {
+  it("should create", () => {
     expect(component).toBeTruthy();
   });
 });

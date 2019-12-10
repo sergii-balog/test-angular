@@ -1,8 +1,8 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { async, ComponentFixture, TestBed } from "@angular/core/testing";
 
-import { GithubFollowersComponent } from './github-followers.component';
+import { GithubFollowersComponent } from "./github-followers.component";
 
-describe('GithubFollowersComponent', () => {
+describe("GithubFollowersComponent", () => {
   let component: GithubFollowersComponent;
   let fixture: ComponentFixture<GithubFollowersComponent>;
 
@@ -19,7 +19,7 @@ describe('GithubFollowersComponent', () => {
     fixture.detectChanges();
   });
 
-  it('should create', () => {
+  it("should create", () => {
     expect(component).toBeTruthy();
   });
 });

@@ -1,8 +1,8 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { async, ComponentFixture, TestBed } from "@angular/core/testing";
 
-import { LikeComponent } from './like.component';
+import { LikeComponent } from "./like.component";
 
-describe('LikeComponent', () => {
+describe("LikeComponent", () => {
   let component: LikeComponent;
   let fixture: ComponentFixture<LikeComponent>;
 
@@ -19,7 +19,7 @@ describe('LikeComponent', () => {
     fixture.detectChanges();
   });
 
-  it('should create', () => {
+  it("should create", () => {
     expect(component).toBeTruthy();
   });
 });

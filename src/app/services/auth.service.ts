@@ -13,7 +13,7 @@ import { AppError } from "../common/errors/app-error";
 })
 export class AuthService {
   private user: IUser;
-  private url: string = "https://feedback.lanteria.com/auth/login";
+  private url = "https://feedback.lanteria.com/auth/login";
 
   constructor(private http: HttpClient) {
     const user = localStorage.getItem("user");

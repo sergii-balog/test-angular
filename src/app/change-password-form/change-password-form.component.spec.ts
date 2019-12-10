@@ -1,8 +1,8 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { async, ComponentFixture, TestBed } from "@angular/core/testing";
 
-import { ChangePasswordFormComponent } from './change-password-form.component';
+import { ChangePasswordFormComponent } from "./change-password-form.component";
 
-describe('ChangePasswordFormComponent', () => {
+describe("ChangePasswordFormComponent", () => {
   let component: ChangePasswordFormComponent;
   let fixture: ComponentFixture<ChangePasswordFormComponent>;
 
@@ -19,7 +19,7 @@ describe('ChangePasswordFormComponent', () => {
     fixture.detectChanges();
   });
 
-  it('should create', () => {
+  it("should create", () => {
     expect(component).toBeTruthy();
   });
 });

@@ -4,7 +4,7 @@ import { Pipe, PipeTransform } from "@angular/core";
   name: "shortstring"
 })
 export class ShortStringPipe implements PipeTransform {
-  private defaultLength: number = 50;
+  private defaultLength = 50;
 
   transform(value: string, startIndex?: number, endIndex?: number): any {
     // check if no arguments are supplied then return 50 characters: Default behavior
