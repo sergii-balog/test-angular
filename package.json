@@ -7,7 +7,9 @@
     "build": "ng build",
     "test": "ng test",
     "lint": "ng lint",
-    "e2e": "ng e2e"
+    "e2e": "ng e2e",
+    "deploy-gh": "ng build --prod --base-href=https://sbal323.github.io/test-angular/ && ngh --dir=dist/test-angular",
+    "deploy-firebase": "firebase login && ng build --prod && firebase deploy"
   },
   "private": true,
   "dependencies": {

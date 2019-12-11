@@ -72,7 +72,7 @@ export class PostsComponent implements OnInit {
 
     table.DataTable({
       ajax: {
-        url: "http://jsonplaceholder.typicode.com/posts",
+        url: "https://jsonplaceholder.typicode.com/posts",
         type: "GET",
         datatype: "json",
         dataSrc: ""
