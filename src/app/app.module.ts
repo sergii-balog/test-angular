@@ -3,6 +3,7 @@ import { NgModule, ErrorHandler } from "@angular/core";
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { HttpClientModule } from "@angular/common/http";
 import { RouterModule } from "@angular/router";
+import { NgReduxModule, NgRedux } from "@angular-redux/store";
 
 import { AppRoutingModule } from "./app-routing.module";
 import { AppComponent } from "./app.component";
@@ -31,6 +32,9 @@ import { AdminGuard } from "./services/admin-guard.service";
 import { UsersComponent } from "./users/users.component";
 import { ShortStringPipe } from "./pipes/short-string.pipe";
 import { IdeaFormComponent } from "./idea-form/idea-form.component";
+import { IAppState, initialApplicationState } from "./redux/store";
+import { ReduxTestComponent } from "./redux-test/redux-test.component";
+import { rootReducer } from "./redux/reducers";
 
 @NgModule({
   declarations: [
@@ -53,7 +57,8 @@ import { IdeaFormComponent } from "./idea-form/idea-form.component";
     AccessDeniedComponent,
     UsersComponent,
     ShortStringPipe,
-    IdeaFormComponent
+    IdeaFormComponent,
+    ReduxTestComponent
   ],
   imports: [
     AngularFontAwesomeModule,
@@ -63,6 +68,7 @@ import { IdeaFormComponent } from "./idea-form/idea-form.component";
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
+    NgReduxModule,
     RouterModule.forRoot([
       {
         path: "",
@@ -74,6 +80,7 @@ import { IdeaFormComponent } from "./idea-form/idea-form.component";
       { path: "forms", component: FormsPageComponent },
       { path: "blog/:year/:month", component: BlogArticleComponent },
       { path: "blog", component: BlogComponent },
+      { path: "redux-test", component: ReduxTestComponent },
       { path: "login", component: LoginFormComponent },
       {
         path: "new-idea",
@@ -118,4 +125,8 @@ import { IdeaFormComponent } from "./idea-form/idea-form.component";
   ],
   bootstrap: [AppComponent]
 })
-export class AppModule {}
+export class AppModule {
+  constructor(ngRedux: NgRedux<IAppState>) {
+    ngRedux.configureStore(rootReducer, initialApplicationState);
+  }
+}

@@ -13,6 +13,7 @@
   },
   "private": true,
   "dependencies": {
+    "@angular-redux/store": "^10.0.0",
     "@angular/animations": "~8.2.7",
     "@angular/common": "^8.2.13",
     "@angular/compiler": "~8.2.7",
@@ -27,8 +28,11 @@
     "datatables.net-bs4": "^1.10.20",
     "font-awesome": "^4.7.0",
     "jquery": "^3.4.1",
+    "redux": "^4.0.1",
+    "redux-devtools-extension": "^2.13.8",
     "rxjs": "~6.4.0",
     "sweetalert2": "^9.5.3",
+    "tassign": "^1.0.0",
     "tslib": "^1.10.0",
     "zone.js": "~0.9.1"
   },

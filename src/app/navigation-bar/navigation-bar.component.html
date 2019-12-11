@@ -48,6 +48,12 @@
         >Broken link</a
       >
       <a
+        class="nav-item nav-link"
+        routerLink="/redux-test"
+        routerLinkActive="active"
+        >Redux Test</a
+      >
+      <a
         *ngIf="authService.isLoggedIn()"
         class="nav-item nav-link"
         routerLink="/ideas"
@@ -61,6 +67,9 @@
         routerLinkActive="active"
         >Users</a
       >
+      <div class="nav-item nav-link">
+        <div class="badge badge-info">{{ count | async }}</div>
+      </div>
     </div>
     <div class="navbar-nav">
       <a
