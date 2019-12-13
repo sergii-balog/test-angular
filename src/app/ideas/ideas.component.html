@@ -2,8 +2,11 @@
   <h5><fa name="cog" animation="spin"></fa> Loading data...</h5>
 </div>
 <div *ngIf="loaded">
-  <button (click)="newIdea()" class="btn btn-primary mb-1">
+  <button (click)="newIdea()" class="btn btn-primary mb-1 mr-2">
     <fa name="lightbulb-o"></fa> New idea
+  </button>
+  <button kendoButton (click)="newIdea()" [primary]="true">
+    <fa name="lightbulb-o" class="mr-1"></fa> Kendo new idea
   </button>
   <table
     id="ideasTable"
@@ -36,5 +39,14 @@
         </td>
       </tr>
     </tbody>
+    <tfoot>
+      <tr>
+        <th>Total:</th>
+        <th></th>
+        <th></th>
+        <th class="text-right">{{ ideas.length }}</th>
+        <th></th>
+      </tr>
+    </tfoot>
   </table>
 </div>
