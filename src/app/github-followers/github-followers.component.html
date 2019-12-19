@@ -1,5 +1,5 @@
 <h3>Github followers</h3>
-<div class="media" *ngFor="let follower of followers; let i = index">
+<div class="media" *ngFor="let follower of followers; let i = index" @slideLeft>
   {{ i + 1 }}.
   <img
     src="{{ follower.avatar_url }}"

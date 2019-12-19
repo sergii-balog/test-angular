@@ -35,18 +35,12 @@ import { IdeaFormComponent } from "./idea-form/idea-form.component";
 import { IAppState, initialApplicationState } from "./redux/store";
 import { ReduxTestComponent } from "./redux-test/redux-test.component";
 import { rootReducer } from "./redux/reducers";
-import { ButtonsModule } from '@progress/kendo-angular-buttons';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { ChartsModule } from '@progress/kendo-angular-charts';
-import 'hammerjs';
-import { GridModule } from '@progress/kendo-angular-grid';
-import { PDFExportModule } from '@progress/kendo-angular-pdf-export';
-
-
-
-
-
-
+import { ButtonsModule } from "@progress/kendo-angular-buttons";
+import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
+import { ChartsModule } from "@progress/kendo-angular-charts";
+import "hammerjs";
+import { GridModule } from "@progress/kendo-angular-grid";
+import { PDFExportModule } from "@progress/kendo-angular-pdf-export";
 
 @NgModule({
   declarations: [

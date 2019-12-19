@@ -8,7 +8,10 @@
       ></fa>
     </div>
   </div>
-  <div class="card-body" *ngIf="!collapsed">
+  <div
+    [@expandCollapse]="collapsed ? 'collapsed' : 'expanded'"
+    class="card-body"
+  >
     <ng-content></ng-content>
   </div>
 </div>
