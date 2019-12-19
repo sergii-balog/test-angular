@@ -41,6 +41,11 @@ import { ChartsModule } from "@progress/kendo-angular-charts";
 import "hammerjs";
 import { GridModule } from "@progress/kendo-angular-grid";
 import { PDFExportModule } from "@progress/kendo-angular-pdf-export";
+import { MaterialTestComponent } from "./material-test/material-test.component";
+import { MatCheckboxModule } from "@angular/material/checkbox";
+import { MatProgressSpinnerModule } from "@angular/material/progress-spinner";
+import { MatRadioModule } from "@angular/material/radio";
+import { MatSelectModule } from "@angular/material/select";
 
 @NgModule({
   declarations: [
@@ -64,7 +69,8 @@ import { PDFExportModule } from "@progress/kendo-angular-pdf-export";
     UsersComponent,
     ShortStringPipe,
     IdeaFormComponent,
-    ReduxTestComponent
+    ReduxTestComponent,
+    MaterialTestComponent
   ],
   imports: [
     AngularFontAwesomeModule,
@@ -75,11 +81,16 @@ import { PDFExportModule } from "@progress/kendo-angular-pdf-export";
     ReactiveFormsModule,
     HttpClientModule,
     NgReduxModule,
+    MatCheckboxModule,
+    MatProgressSpinnerModule,
+    MatRadioModule,
+    MatSelectModule,
     RouterModule.forRoot([
       {
         path: "",
         component: HomePageComponent
       },
+      { path: "material-test", component: MaterialTestComponent },
       { path: "followers", component: GithubFollowersComponent },
       { path: "posts", component: PostsComponent },
       { path: "zipper-like", component: ZipperLikeComponent },

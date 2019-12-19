@@ -4,6 +4,7 @@
 @import "datatables.net-bs4/css/dataTables.bootstrap4.min.css";
 @import "font-awesome/css/font-awesome.css";
 @import "animate.css/animate.min";
+@import "@angular/material/prebuilt-themes/indigo-pink.css";
 
 body {
   padding: 5px;
@@ -11,4 +12,13 @@ body {
 }
 h3 {
   margin-bottom: 15px;
+}
+
+html,
+body {
+  height: 100%;
+}
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
 }

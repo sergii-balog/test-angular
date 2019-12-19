@@ -1,0 +1,33 @@
+<mat-spinner
+  style="margin:0 auto;"
+  mode="indeterminate"
+  *ngIf="!isLoaded"
+></mat-spinner>
+<div *ngIf="isLoaded">
+  <mat-checkbox [(ngModel)]="form.isSubscribed" value="" color="primary"
+    >Subscribe to newsletter</mat-checkbox
+  >
+  <div *ngIf="form.isSubscribed">
+    <div>Pick your favorite area:</div>
+    <mat-radio-group aria-label="Select an option" [(ngModel)]="form.newsArea">
+      <mat-radio-button class="radioButton" value="1"
+        >General news</mat-radio-button
+      >
+      <mat-radio-button class="radioButton" value="2"
+        >Product news</mat-radio-button
+      >
+      <mat-radio-button class="radioButton" value="3"
+        >Company news</mat-radio-button
+      >
+    </mat-radio-group>
+    <mat-form-field *ngIf="form.newsArea">
+      <mat-label>Delivery method</mat-label>
+      <mat-select [(ngModel)]="form.deliveryMethod">
+        <mat-option *ngFor="let delivery of deliveryMethods" [value]="delivery">
+          {{ delivery }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+  </div>
+</div>
+{{ form | json }}
