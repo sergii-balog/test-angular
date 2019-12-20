@@ -2,7 +2,6 @@ import { BrowserModule } from "@angular/platform-browser";
 import { NgModule, ErrorHandler } from "@angular/core";
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { HttpClientModule } from "@angular/common/http";
-import { RouterModule } from "@angular/router";
 import { NgReduxModule, NgRedux } from "@angular-redux/store";
 
 import { AppRoutingModule } from "./app-routing.module";
@@ -26,26 +25,20 @@ import { BlogComponent } from "./blog/blog.component";
 import { BlogArticleComponent } from "./blog-article/blog-article.component";
 import { LoginFormComponent } from "./login-form/login-form.component";
 import { IdeasComponent } from "./ideas/ideas.component";
-import { AuthGuard } from "./services/auth-guard.service";
 import { AccessDeniedComponent } from "./access-denied/access-denied.component";
-import { AdminGuard } from "./services/admin-guard.service";
 import { UsersComponent } from "./users/users.component";
 import { ShortStringPipe } from "./pipes/short-string.pipe";
 import { IdeaFormComponent } from "./idea-form/idea-form.component";
 import { IAppState, initialApplicationState } from "./redux/store";
 import { ReduxTestComponent } from "./redux-test/redux-test.component";
 import { rootReducer } from "./redux/reducers";
-import { ButtonsModule } from "@progress/kendo-angular-buttons";
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
-import { ChartsModule } from "@progress/kendo-angular-charts";
+
 import "hammerjs";
-import { GridModule } from "@progress/kendo-angular-grid";
-import { PDFExportModule } from "@progress/kendo-angular-pdf-export";
+
 import { MaterialTestComponent } from "./material-test/material-test.component";
-import { MatCheckboxModule } from "@angular/material/checkbox";
-import { MatProgressSpinnerModule } from "@angular/material/progress-spinner";
-import { MatRadioModule } from "@angular/material/radio";
-import { MatSelectModule } from "@angular/material/select";
+import { MdComponentsModule } from "./md-components/md-components.module";
+import { KendoComponentsModule } from "./kendo-components/kendo-components.module";
 
 @NgModule({
   declarations: [
@@ -81,64 +74,9 @@ import { MatSelectModule } from "@angular/material/select";
     ReactiveFormsModule,
     HttpClientModule,
     NgReduxModule,
-    MatCheckboxModule,
-    MatProgressSpinnerModule,
-    MatRadioModule,
-    MatSelectModule,
-    RouterModule.forRoot([
-      {
-        path: "",
-        component: HomePageComponent
-      },
-      { path: "material-test", component: MaterialTestComponent },
-      { path: "followers", component: GithubFollowersComponent },
-      { path: "posts", component: PostsComponent },
-      { path: "zipper-like", component: ZipperLikeComponent },
-      { path: "forms", component: FormsPageComponent },
-      { path: "blog/:year/:month", component: BlogArticleComponent },
-      { path: "blog", component: BlogComponent },
-      { path: "redux-test", component: ReduxTestComponent },
-      { path: "login", component: LoginFormComponent },
-      {
-        path: "new-idea",
-        component: IdeaFormComponent,
-        canActivate: [AuthGuard]
-      },
-      {
-        path: "idea/:id",
-        canActivate: [AuthGuard],
-        children: [
-          {
-            path: "",
-            component: IdeaFormComponent,
-            canActivate: [AdminGuard]
-          }
-        ]
-      },
-      {
-        path: "ideas",
-        component: IdeasComponent,
-        canActivate: [AuthGuard]
-      },
-      {
-        path: "users",
-        canActivate: [AuthGuard],
-        children: [
-          {
-            path: "",
-            component: UsersComponent,
-            canActivate: [AdminGuard]
-          }
-        ]
-      },
-      { path: "access-denied", component: AccessDeniedComponent },
-      { path: "**", component: NotFoundComponent }
-    ]),
-    ButtonsModule,
-    BrowserAnimationsModule,
-    ChartsModule,
-    GridModule,
-    PDFExportModule
+    MdComponentsModule,
+    KendoComponentsModule,
+    BrowserAnimationsModule
   ],
   providers: [
     { provide: ErrorHandler, useClass: AppErrorHandler },

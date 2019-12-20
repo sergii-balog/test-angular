@@ -90,10 +90,10 @@
       </div>
     </div>
   </div>
-  <button class="btn btn-primary mr-2" [disabled]="ideaForm.invalid">
+  <button class="btn btn-primary mr-2" [disabled]="ideaForm.invalid" mat-button>
     Submit
   </button>
-  <button class="btn btn-secondary" (click)="onCancel()">
+  <button class="btn btn-secondary" (click)="onCancel()" matDialogClose>
     Cancel
   </button>
 </form>

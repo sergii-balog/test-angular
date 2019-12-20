@@ -3,31 +3,136 @@
   mode="indeterminate"
   *ngIf="!isLoaded"
 ></mat-spinner>
-<div *ngIf="isLoaded">
-  <mat-checkbox [(ngModel)]="form.isSubscribed" value="" color="primary"
-    >Subscribe to newsletter</mat-checkbox
-  >
-  <div *ngIf="form.isSubscribed">
-    <div>Pick your favorite area:</div>
-    <mat-radio-group aria-label="Select an option" [(ngModel)]="form.newsArea">
-      <mat-radio-button class="radioButton" value="1"
-        >General news</mat-radio-button
+<form class="form">
+  <div *ngIf="isLoaded">
+    <mat-checkbox
+      [(ngModel)]="formData.isSubscribed"
+      value=""
+      color="primary"
+      name="isSubscribed"
+      >Subscribe to newsletter</mat-checkbox
+    >
+    <div *ngIf="formData.isSubscribed">
+      <div class="mat-h4">Pick your favorite area:</div>
+      <mat-radio-group
+        name="newsArea"
+        aria-label="Select an option"
+        [(ngModel)]="formData.newsArea"
       >
-      <mat-radio-button class="radioButton" value="2"
-        >Product news</mat-radio-button
+        <mat-radio-button class="radioButton" value="1"
+          >General news</mat-radio-button
+        >
+        <mat-radio-button class="radioButton" value="2"
+          >Product news</mat-radio-button
+        >
+        <mat-radio-button class="radioButton" value="3"
+          >Company news</mat-radio-button
+        >
+      </mat-radio-group>
+      <mat-form-field *ngIf="formData.newsArea" class="full-width">
+        <mat-label>Delivery method</mat-label>
+        <mat-select
+          [(ngModel)]="formData.deliveryMethod"
+          name="deliveryMethod"
+          required
+        >
+          <mat-option
+            *ngFor="let delivery of deliveryMethods"
+            [value]="delivery"
+          >
+            {{ delivery }}
+          </mat-option>
+        </mat-select>
+        <mat-icon fontSet="material-icons-outlined" matPrefix class="m-1"
+          >local_airport</mat-icon
+        > </mat-form-field
+      ><br />
+      <mat-form-field *ngIf="formData.newsArea" class="full-width">
+        <input
+          required
+          matInput
+          name="email"
+          placeholder="Email"
+          [formControl]="emailFormControl"
+          (keyup)="onKey($event)"
+        />
+        <mat-icon fontSet="material-icons-outlined" matPrefix class="m-1"
+          >email</mat-icon
+        >
+        <mat-hint>Valid email address</mat-hint>
+        <mat-error
+          *ngIf="
+            emailFormControl.hasError('email') &&
+            !emailFormControl.hasError('required')
+          "
+        >
+          Please enter a valid email address
+        </mat-error>
+        <mat-error *ngIf="emailFormControl.hasError('required')">
+          Email is <strong>required</strong>
+        </mat-error>
+      </mat-form-field>
+      <mat-form-field class="full-width" *ngIf="formData.newsArea">
+        <textarea
+          [(ngModel)]="formData.comments"
+          name="comments"
+          matInput
+          cdkTextareaAutosize
+          cdkAutosizeMinRows="3"
+          cdkAutosizeMaxRows="5"
+          placeholder="Leave a comment"
+        ></textarea>
+        <mat-icon fontSet="material-icons-outlined" matPrefix class="m-1"
+          >comment</mat-icon
+        >
+      </mat-form-field>
+      <mat-form-field class="full-width" *ngIf="formData.newsArea">
+        <input
+          required
+          matInput
+          (focus)="picker.open()"
+          [(ngModel)]="formData.deliveryDate"
+          [min]="minDate"
+          [max]="maxDate"
+          name="deliveryDate"
+          [matDatepicker]="picker"
+          placeholder="Choose a delivery date"
+        />
+        <mat-icon fontSet="material-icons-outlined" matPrefix class="m-1"
+          >date_range</mat-icon
+        >
+        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+      </mat-form-field>
+      <button
+        *ngIf="formData.newsArea"
+        mat-raised-button
+        color="primary"
+        (click)="submit()"
       >
-      <mat-radio-button class="radioButton" value="3"
-        >Company news</mat-radio-button
+        <mat-icon class="mr-2">alarm_add</mat-icon>SUBSCRIBE
+      </button>
+      <button
+        mat-fab
+        color="accent"
+        (click)="submit()"
+        *ngIf="formData.newsArea"
+        class="ml-5"
+        style="outline: none;"
       >
-    </mat-radio-group>
-    <mat-form-field *ngIf="form.newsArea">
-      <mat-label>Delivery method</mat-label>
-      <mat-select [(ngModel)]="form.deliveryMethod">
-        <mat-option *ngFor="let delivery of deliveryMethods" [value]="delivery">
-          {{ delivery }}
-        </mat-option>
-      </mat-select>
-    </mat-form-field>
+        <mat-icon>local_post_office</mat-icon>
+      </button>
+      <button
+        mat-fab
+        color="accent"
+        (click)="openDialog()"
+        *ngIf="formData.newsArea"
+        class="ml-5"
+        style="outline: none;"
+      >
+        <mat-icon>accessibility</mat-icon>
+      </button>
+    </div>
   </div>
-</div>
-{{ form | json }}
+</form>
+{{ formData | json }}

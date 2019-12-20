@@ -2,3 +2,12 @@
   margin: 5px;
   display: block;
 }
+.form {
+  min-width: 250px;
+  max-width: 600px;
+  width: 100%;
+}
+
+.full-width {
+  width: 100%;
+}
