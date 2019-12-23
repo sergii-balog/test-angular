@@ -1,3 +1,8 @@
+<link
+  [href]="sanitizer.bypassSecurityTrustResourceUrl(theme)"
+  rel="stylesheet"
+/>
+<button (click)="changeTheme()">Change theme</button>
 <div class="p-2">
   <navigation-bar></navigation-bar>
   <div class="p-3">
