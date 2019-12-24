@@ -1,6 +1,3 @@
-import { TestBed } from "@angular/core/testing";
-
-import { AuthGuard } from "./auth-guard.service";
 import { AppRoutingModule } from "../app-routing.module";
 import { HomePageComponent } from "../home-page/home-page.component";
 import { MaterialTestComponent } from "../material-test/material-test.component";
@@ -29,48 +26,70 @@ import { ReactiveFormsModule } from "@angular/forms";
 import { AngularFontAwesomeModule } from "angular-font-awesome";
 import { KendoComponentsModule } from "./../kendo-components/kendo-components.module";
 import { HttpClientModule } from "@angular/common/http";
+import { NgModule } from "@angular/core";
 
-describe("AuthGuard", () => {
-  beforeEach(() =>
-    TestBed.configureTestingModule({
-      imports: [
-        AppRoutingModule,
-        MdComponentsModule,
-        FormsModule,
-        ReactiveFormsModule,
-        AngularFontAwesomeModule,
-        KendoComponentsModule,
-        HttpClientModule
-      ],
-
-      declarations: [
-        HomePageComponent,
-        MaterialTestComponent,
-        GithubFollowersComponent,
-        PostsComponent,
-        ZipperLikeComponent,
-        FormsPageComponent,
-        BlogArticleComponent,
-        BlogComponent,
-        ReduxTestComponent,
-        LoginFormComponent,
-        IdeaFormComponent,
-        IdeasComponent,
-        LikeComponent,
-        ZippyComponent,
-        CourseFormComponent,
-        ChangePasswordFormComponent,
-        NavigationBarComponent,
-        NotFoundComponent,
-        AccessDeniedComponent,
-        UsersComponent,
-        ShortStringPipe
-      ]
-    })
-  );
-
-  it("should be created", () => {
-    const service: AuthGuard = TestBed.get(AuthGuard);
-    expect(service).toBeTruthy();
-  });
-});
+@NgModule({
+  imports: [
+    AppRoutingModule,
+    MdComponentsModule,
+    FormsModule,
+    ReactiveFormsModule,
+    AngularFontAwesomeModule,
+    KendoComponentsModule,
+    HttpClientModule
+  ],
+  declarations: [
+    HomePageComponent,
+    MaterialTestComponent,
+    GithubFollowersComponent,
+    PostsComponent,
+    ZipperLikeComponent,
+    FormsPageComponent,
+    BlogArticleComponent,
+    BlogComponent,
+    ReduxTestComponent,
+    LoginFormComponent,
+    IdeaFormComponent,
+    IdeasComponent,
+    LikeComponent,
+    ZippyComponent,
+    CourseFormComponent,
+    ChangePasswordFormComponent,
+    NavigationBarComponent,
+    NotFoundComponent,
+    AccessDeniedComponent,
+    UsersComponent,
+    ShortStringPipe
+  ],
+  exports: [
+    AppRoutingModule,
+    MdComponentsModule,
+    FormsModule,
+    ReactiveFormsModule,
+    AngularFontAwesomeModule,
+    KendoComponentsModule,
+    HttpClientModule,
+    HomePageComponent,
+    MaterialTestComponent,
+    GithubFollowersComponent,
+    PostsComponent,
+    ZipperLikeComponent,
+    FormsPageComponent,
+    BlogArticleComponent,
+    BlogComponent,
+    ReduxTestComponent,
+    LoginFormComponent,
+    IdeaFormComponent,
+    IdeasComponent,
+    LikeComponent,
+    ZippyComponent,
+    CourseFormComponent,
+    ChangePasswordFormComponent,
+    NavigationBarComponent,
+    NotFoundComponent,
+    AccessDeniedComponent,
+    UsersComponent,
+    ShortStringPipe
+  ]
+})
+export class TestModule {}

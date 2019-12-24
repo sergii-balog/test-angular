@@ -1,4 +1,4 @@
 <span [class.notLiked]="!isLiked" [class.liked]="isLiked" class="heart">
-  <fa name="heart" (click)="onClick()"></fa>
+  <fa name="heart" (click)="onClick()" class="heartIcon"></fa>
 </span>
-{{ numberOfLikes }}
+<span class="numberOfLikes ml-1">{{ numberOfLikes }}</span>

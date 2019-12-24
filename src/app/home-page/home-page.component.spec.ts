@@ -1,6 +1,7 @@
 import { async, ComponentFixture, TestBed } from "@angular/core/testing";
 
 import { HomePageComponent } from "./home-page.component";
+import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 
 describe("HomePageComponent", () => {
   let component: HomePageComponent;
@@ -8,9 +9,9 @@ describe("HomePageComponent", () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ HomePageComponent ]
-    })
-    .compileComponents();
+      declarations: [HomePageComponent],
+      imports: [BrowserAnimationsModule]
+    }).compileComponents();
   }));
 
   beforeEach(() => {

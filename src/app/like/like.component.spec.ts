@@ -1,6 +1,8 @@
 import { async, ComponentFixture, TestBed } from "@angular/core/testing";
 
 import { LikeComponent } from "./like.component";
+import { By } from "@angular/platform-browser";
+import { AngularFontAwesomeModule } from "angular-font-awesome";
 
 describe("LikeComponent", () => {
   let component: LikeComponent;
@@ -8,9 +10,9 @@ describe("LikeComponent", () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ LikeComponent ]
-    })
-    .compileComponents();
+      declarations: [LikeComponent],
+      imports: [AngularFontAwesomeModule]
+    }).compileComponents();
   }));
 
   beforeEach(() => {
@@ -21,5 +23,49 @@ describe("LikeComponent", () => {
 
   it("should create", () => {
     expect(component).toBeTruthy();
+  });
+
+  it("should highlight heart when component is liked", () => {
+    component.isLiked = true;
+    fixture.detectChanges();
+
+    const element = fixture.debugElement.query(By.css(".heart"));
+    expect(element.classes.liked).toBeTruthy();
+  });
+  it("should NOT highlight heart when component is NOT liked", () => {
+    component.isLiked = false;
+    fixture.detectChanges();
+
+    const element = fixture.debugElement.query(By.css(".heart"));
+    expect(element.classes.notLiked).toBeTruthy();
+  });
+  it("should display number of likes", () => {
+    component.numberOfLikes = 1;
+    fixture.detectChanges();
+
+    const element = fixture.debugElement.query(By.css(".numberOfLikes"))
+      .nativeElement;
+    expect(element.innerText).toContain(1);
+  });
+  it("should process like", () => {
+    const icon = fixture.debugElement.query(By.css(".heartIcon"));
+    component.numberOfLikes = 0;
+
+    icon.triggerEventHandler("click", null);
+    fixture.detectChanges();
+
+    expect(component.numberOfLikes).toBe(1);
+    expect(component.isLiked).toBeTruthy();
+  });
+  it("should process UNlike", () => {
+    const icon = fixture.debugElement.query(By.css(".heartIcon"));
+    component.numberOfLikes = 1;
+    component.isLiked = true;
+
+    icon.triggerEventHandler("click", null);
+    fixture.detectChanges();
+
+    expect(component.numberOfLikes).toBe(0);
+    expect(component.isLiked).toBeFalsy();
   });
 });

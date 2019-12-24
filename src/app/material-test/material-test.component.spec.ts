@@ -1,16 +1,18 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { async, ComponentFixture, TestBed } from "@angular/core/testing";
 
-import { MaterialTestComponent } from './material-test.component';
+import { MaterialTestComponent } from "./material-test.component";
+import { MdComponentsModule } from "../md-components/md-components.module";
+import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 
-describe('MaterialTestComponent', () => {
+describe("MaterialTestComponent", () => {
   let component: MaterialTestComponent;
   let fixture: ComponentFixture<MaterialTestComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ MaterialTestComponent ]
-    })
-    .compileComponents();
+      declarations: [MaterialTestComponent],
+      imports: [MdComponentsModule, FormsModule, ReactiveFormsModule]
+    }).compileComponents();
   }));
 
   beforeEach(() => {
@@ -19,7 +21,7 @@ describe('MaterialTestComponent', () => {
     fixture.detectChanges();
   });
 
-  it('should create', () => {
+  it("should create", () => {
     expect(component).toBeTruthy();
   });
 });
