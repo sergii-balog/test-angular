@@ -25,7 +25,6 @@ export class UsersComponent implements OnInit {
   public gridView: any[];
 
   users: User[];
-  //taticTable: any;
   loaded: boolean;
   usersByRole: number[];
   usersByRoleNames: string[];
@@ -44,7 +43,7 @@ export class UsersComponent implements OnInit {
       this.users.filter(x => x.role === "Administrator").length
     );
     this.usersByRoleNames.push("Administrator");
-    //load grid
+    // load grid
     this.gridView = this.users;
   }
   ngOnInit() {
@@ -60,7 +59,7 @@ export class UsersComponent implements OnInit {
             username: "user" + idx + "@lanteria.com"
           }));
         this.gridView = this.users;
-        //this.users = result.users;
+        // this.users = result.users;
         this.loaded = true;
         this.loadChart();
 

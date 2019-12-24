@@ -3,10 +3,20 @@ import { async, ComponentFixture, TestBed } from "@angular/core/testing";
 import { IdeasComponent } from "./ideas.component";
 import { AngularFontAwesomeModule } from "angular-font-awesome";
 import { KendoComponentsModule } from "./../kendo-components/kendo-components.module";
-import { AppRoutingModule } from "./../app-routing.module";
-import { HomePageComponent } from "../home-page/home-page.component";
-import { MaterialTestComponent } from "../material-test/material-test.component";
-import { GithubFollowersComponent } from "../github-followers/github-followers.component";
+import { Router } from "@angular/router";
+import { IdeasService } from "../services/ideas.service";
+import { RouterTestingModule } from "@angular/router/testing";
+import { ShortStringPipe } from "./../pipes/short-string.pipe";
+import { Observable, from } from "rxjs";
+
+class RouterStub {
+  navigate(params) {}
+}
+class IdeasServiceStub {
+  getAllIdeas() {
+    return from([1, 2, 3]);
+  }
+}
 
 describe("IdeasComponent", () => {
   let component: IdeasComponent;
@@ -14,16 +24,15 @@ describe("IdeasComponent", () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [
-        IdeasComponent,
-        HomePageComponent,
-        MaterialTestComponent,
-        GithubFollowersComponent
-      ],
+      declarations: [IdeasComponent, ShortStringPipe],
       imports: [
         AngularFontAwesomeModule,
         KendoComponentsModule,
-        AppRoutingModule
+        RouterTestingModule
+      ],
+      providers: [
+        { provide: Router, useClass: RouterStub },
+        { provide: IdeasService, useClass: IdeasServiceStub }
       ]
     }).compileComponents();
   }));
@@ -34,7 +43,7 @@ describe("IdeasComponent", () => {
     fixture.detectChanges();
   });
 
-  // it("should create", () => {
-  //   expect(component).toBeTruthy();
-  // });
+  it("should create", () => {
+    expect(component).toBeTruthy();
+  });
 });
