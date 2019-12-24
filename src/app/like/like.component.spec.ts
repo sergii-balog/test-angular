@@ -47,25 +47,13 @@ describe("LikeComponent", () => {
       .nativeElement;
     expect(element.innerText).toContain(1);
   });
-  it("should process like", () => {
+  it("should call method on like", () => {
     const icon = fixture.debugElement.query(By.css(".heartIcon"));
-    component.numberOfLikes = 0;
+    const method = spyOn(component, "onClick");
 
     icon.triggerEventHandler("click", null);
     fixture.detectChanges();
 
-    expect(component.numberOfLikes).toBe(1);
-    expect(component.isLiked).toBeTruthy();
-  });
-  it("should process UNlike", () => {
-    const icon = fixture.debugElement.query(By.css(".heartIcon"));
-    component.numberOfLikes = 1;
-    component.isLiked = true;
-
-    icon.triggerEventHandler("click", null);
-    fixture.detectChanges();
-
-    expect(component.numberOfLikes).toBe(0);
-    expect(component.isLiked).toBeFalsy();
+    expect(method).toHaveBeenCalled();
   });
 });
