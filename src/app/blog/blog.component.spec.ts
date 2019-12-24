@@ -1,9 +1,7 @@
 import { async, ComponentFixture, TestBed } from "@angular/core/testing";
 
 import { BlogComponent } from "./blog.component";
-import { AppRoutingModule } from "../app-routing.module";
-import { HomePageComponent } from "../home-page/home-page.component";
-import { MaterialTestComponent } from "../material-test/material-test.component";
+import { RouterTestingModule } from "@angular/router/testing";
 
 describe("BlogComponent", () => {
   let component: BlogComponent;
@@ -11,8 +9,8 @@ describe("BlogComponent", () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [BlogComponent, HomePageComponent, MaterialTestComponent],
-      imports: [AppRoutingModule]
+      imports: [RouterTestingModule],
+      declarations: [BlogComponent]
     }).compileComponents();
   }));
 
@@ -22,7 +20,7 @@ describe("BlogComponent", () => {
     fixture.detectChanges();
   });
 
-  // it("should create", () => {
-  //   expect(component).toBeTruthy();
-  // });
+  it("should create", () => {
+    expect(component).toBeTruthy();
+  });
 });

@@ -1,10 +1,16 @@
 import { async, ComponentFixture, TestBed } from "@angular/core/testing";
 
 import { BlogArticleComponent } from "./blog-article.component";
-import { ActivatedRoute } from "@angular/router";
-import { AppRoutingModule } from "../app-routing.module";
-import { HomePageComponent } from "../home-page/home-page.component";
-import { MaterialTestComponent } from "../material-test/material-test.component";
+import { ActivatedRoute, Router, ParamMap } from "@angular/router";
+import { Observable, empty } from "rxjs";
+
+class ActivatedRouteStub {
+  params: Observable<any> = empty();
+  snapshot = { paramMap: { get(name) {} } as ParamMap };
+}
+class RouterStub {
+  navigate(params) {}
+}
 
 describe("BlogArticleComponent", () => {
   let component: BlogArticleComponent;
@@ -12,12 +18,11 @@ describe("BlogArticleComponent", () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [
-        BlogArticleComponent,
-        HomePageComponent,
-        MaterialTestComponent
-      ],
-      imports: [AppRoutingModule]
+      declarations: [BlogArticleComponent],
+      providers: [
+        { provide: Router, useClass: RouterStub },
+        { provide: ActivatedRoute, useClass: ActivatedRouteStub }
+      ]
     }).compileComponents();
   }));
 
@@ -27,7 +32,7 @@ describe("BlogArticleComponent", () => {
     fixture.detectChanges();
   });
 
-  // it("should create", () => {
-  //   expect(component).toBeTruthy();
-  // });
+  it("should create", () => {
+    expect(component).toBeTruthy();
+  });
 });
