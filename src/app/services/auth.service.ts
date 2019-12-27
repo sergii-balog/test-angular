@@ -1,5 +1,4 @@
 import { Injectable } from "@angular/core";
-import { DataService } from "./data.service";
 import { HttpClient } from "@angular/common/http";
 import { map } from "rxjs/operators";
 import { ILoginResponse } from "../models/login-response";
@@ -7,6 +6,7 @@ import { IUser } from "./../models/user";
 import { catchError } from "rxjs/operators";
 import { throwError, Observable } from "rxjs";
 import { AppError } from "../common/errors/app-error";
+import * as jwt_decode from "jwt-decode";
 
 @Injectable({
   providedIn: "root"
@@ -54,6 +54,7 @@ export class AuthService {
     return false;
   }
   public get currentUser() {
+    // console.log(this.user, jwt_decode(this.user.token));
     return this.user;
   }
   public get isAdmin(): boolean {
