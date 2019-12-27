@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
+  <file source-language="en" datatype="plaintext" original="ng2.template">
+    <body>
+      <trans-unit id="not-found_header" datatype="html">
+        <source>Yo! It&apos;s pain :(</source>
+        <target>Уууппппсссссс. Жизнь боль :(</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/not-found/not-found.component.html</context>
+          <context context-type="linenumber">4</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="not-found_message" datatype="html">
+        <source>
+          We can&apos;t find the page requested, but we already working to fix it!
+        </source>
+        <target>
+          Мы не можем найти запрашиваемую страницу, но уже вовсю работаем дабы устранить эту проблему!
+        </target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/not-found/not-found.component.html</context>
+          <context context-type="linenumber">7</context>
+        </context-group>
+      </trans-unit>
+    </body>
+  </file>
+</xliff>

@@ -32,6 +32,13 @@
             ]
           },
           "configurations": {
+            "ru": {
+              "aot": true,
+              "outputPath": "dist/test-angular-ru/",
+              "i18nFile": "src/locale/messages.ru.xlf",
+              "i18nFormat": "xlf",
+              "i18nLocale": "ru"
+            },
             "production": {
               "fileReplacements": [
                 {
@@ -69,6 +76,9 @@
             "browserTarget": "test-angular:build"
           },
           "configurations": {
+            "ru": {
+              "browserTarget": "test-angular:build:ru"
+            },
             "production": {
               "browserTarget": "test-angular:build:production"
             }
