@@ -7,15 +7,20 @@
 <form #ideaForm="ngForm" (ngSubmit)="onSubmit(ideaForm.value)">
   <div class="form-group">
     <label for="courseName">Title</label>
-    <input
-      ngModel
-      name="title"
-      id="title"
-      [(ngModel)]="idea.title"
-      type="text"
-      class="form-control"
-      required
-    />
+    <div class="input-group">
+      <div class="input-group-prepend">
+        <span class="input-group-text"><fa name="lightbulb-o"></fa></span>
+      </div>
+      <input
+        ngModel
+        name="title"
+        id="title"
+        [(ngModel)]="idea.title"
+        type="text"
+        class="form-control"
+        required
+      />
+    </div>
     <div
       class="alert alert-danger"
       *ngIf="
@@ -30,21 +35,26 @@
   </div>
   <div class="form-group">
     <label for="courseCategory">Module</label>
-    <select
-      name="module"
-      id="module"
-      [(ngModel)]="idea.module"
-      required
-      class="form-control"
-    >
-      <option></option>
-      <option
-        *ngFor="let category of categories"
-        [value]="category"
-        [selected]="category === idea.module"
-        >{{ category }}</option
+    <div class="input-group">
+      <div class="input-group-prepend">
+        <span class="input-group-text"><fa name="bars"></fa></span>
+      </div>
+      <select
+        name="module"
+        id="module"
+        [(ngModel)]="idea.module"
+        required
+        class="form-control"
       >
-    </select>
+        <option></option>
+        <option
+          *ngFor="let category of categories"
+          [value]="category"
+          [selected]="category === idea.module"
+          >{{ category }}</option
+        >
+      </select>
+    </div>
     <div
       class="alert alert-danger"
       *ngIf="
@@ -69,15 +79,20 @@
   </div>
   <div class="form-group">
     <label for="courseName">Description</label>
-    <textarea
-      ngModel
-      name="description"
-      id="description"
-      [(ngModel)]="idea.description"
-      rows="5"
-      class="form-control"
-      required
-    ></textarea>
+    <div class="input-group">
+      <div class="input-group-prepend">
+        <span class="input-group-text"><fa name="comment-o"></fa></span>
+      </div>
+      <textarea
+        ngModel
+        name="description"
+        id="description"
+        [(ngModel)]="idea.description"
+        rows="5"
+        class="form-control"
+        required
+      ></textarea>
+    </div>
     <div
       class="alert alert-danger"
       *ngIf="
