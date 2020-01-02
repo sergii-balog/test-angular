@@ -15,6 +15,7 @@ export class SignalrTestComponent implements OnInit, OnDestroy {
   title: string;
   type: string;
   text: string;
+  serverName: string;
   connection: signalR.HubConnection;
 
   ngOnDestroy() {
@@ -38,6 +39,9 @@ export class SignalrTestComponent implements OnInit, OnDestroy {
       .start()
       .then(() => {
         console.log("Connected to SignalR...");
+        this.connection
+          .invoke("GetServerName")
+          .then(x => (this.serverName = x));
       })
       .catch(err => {
         throw new AppClientError("Can't connect to SignalR", err);
