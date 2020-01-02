@@ -17,6 +17,7 @@ import { IdeasComponent } from "./ideas/ideas.component";
 import { UsersComponent } from "./users/users.component";
 import { AccessDeniedComponent } from "./access-denied/access-denied.component";
 import { NotFoundComponent } from "./not-found/not-found.component";
+import { SignalrTestComponent } from "./signalr-test/signalr-test.component";
 
 const routes: Routes = [
   {
@@ -31,6 +32,7 @@ const routes: Routes = [
   { path: "blog/:year/:month", component: BlogArticleComponent },
   { path: "blog", component: BlogComponent },
   { path: "redux-test", component: ReduxTestComponent },
+  { path: "signalr-test", component: SignalrTestComponent },
   { path: "login", component: LoginFormComponent },
   {
     path: "new-idea",
@@ -70,6 +72,7 @@ const routes: Routes = [
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
+
   exports: [RouterModule]
 })
 export class AppRoutingModule {}

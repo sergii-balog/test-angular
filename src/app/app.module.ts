@@ -39,6 +39,7 @@ import "hammerjs";
 import { MaterialTestComponent } from "./material-test/material-test.component";
 import { MdComponentsModule } from "./md-components/md-components.module";
 import { KendoComponentsModule } from "./kendo-components/kendo-components.module";
+import { SignalrTestComponent } from './signalr-test/signalr-test.component';
 
 @NgModule({
   declarations: [
@@ -63,7 +64,8 @@ import { KendoComponentsModule } from "./kendo-components/kendo-components.modul
     ShortStringPipe,
     IdeaFormComponent,
     ReduxTestComponent,
-    MaterialTestComponent
+    MaterialTestComponent,
+    SignalrTestComponent
   ],
   imports: [
     AngularFontAwesomeModule,
