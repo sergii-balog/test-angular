@@ -1,3 +1,12 @@
 <h2>Connected to {{ serverName }}</h2>
 <h3 *ngIf="type">{{ title }} [{{ type }}]</h3>
 <p>{{ text }}</p>
+<div>
+  <button class="btn btn-primary mr-2" (click)="sendAll()">Send All</button>
+  <button class="btn btn-secondary mr-2" (click)="sendCaller()">
+    Send Caller
+  </button>
+  <button class="btn btn-warning mr-2" (click)="sendGroup()">
+    Send Group 1
+  </button>
+</div>

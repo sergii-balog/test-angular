@@ -29,29 +29,60 @@ export class SignalrTestComponent implements OnInit, OnDestroy {
         return console.error(err.toString());
       });
   }
-  ngOnInit() {
+  sendAll() {
+    this.connection.invoke(
+      "NotifyAll",
+      "info",
+      "Message from client",
+      "Hi all other subscribers!"
+    );
+  }
+  sendCaller() {
+    this.connection.invoke(
+      "NotifyCaller",
+      "info",
+      "Message from client",
+      "Hi only me!"
+    );
+  }
+  sendGroup() {
+    this.connection.invoke(
+      "NotifyGroup",
+      "info",
+      "Message from client",
+      "Hi group mates!"
+    );
+  }
+  async ngOnInit() {
     this.connection = new signalR.HubConnectionBuilder()
       .configureLogging(signalR.LogLevel.Information)
-      .withUrl("http://localhost:5000/messages")
+      .withUrl("http://localhost:5000/messages") // , { accessTokenFactory: () => this.loginToken })
       .build();
 
-    this.connection
-      .start()
-      .then(() => {
-        console.log("Connected to SignalR...");
-        this.connection
-          .invoke("GetServerName")
-          .then(x => (this.serverName = x));
-      })
-      .catch(err => {
-        throw new AppClientError("Can't connect to SignalR", err);
-      });
+    try {
+      await this.connection.start();
+      console.log("Connected to SignalR...");
+      this.connection.invoke("GetServerName").then(x => (this.serverName = x));
+    } catch (err) {
+      throw new AppClientError("Can't connect to SignalR", err);
+    }
 
     this.connection.on(
       "BroadcastMessage",
       (type: string, title: string, text: string) =>
         this.processMessage(type, title, text)
     );
+    // this.connection.stream("BroadcastMessage").subscribe({
+    //   next: item => {
+    //     console.log(item); // <= this works: I can get the data from server
+    //   },
+    //   error: err => {
+    //     console.log(err);
+    //   },
+    //   complete: () => {
+    //     console.log("finished streaming");
+    //   }
+    // });
   }
   private processMessage(type: string, title: string, text: string) {
     this.title = title;
