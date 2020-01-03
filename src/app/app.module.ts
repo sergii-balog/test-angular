@@ -39,7 +39,8 @@ import "hammerjs";
 import { MaterialTestComponent } from "./material-test/material-test.component";
 import { MdComponentsModule } from "./md-components/md-components.module";
 import { KendoComponentsModule } from "./kendo-components/kendo-components.module";
-import { SignalrTestComponent } from './signalr-test/signalr-test.component';
+import { SignalrTestComponent } from "./signalr-test/signalr-test.component";
+import { WeatherComponent } from "./weather/weather.component";
 
 @NgModule({
   declarations: [
@@ -65,7 +66,8 @@ import { SignalrTestComponent } from './signalr-test/signalr-test.component';
     IdeaFormComponent,
     ReduxTestComponent,
     MaterialTestComponent,
-    SignalrTestComponent
+    SignalrTestComponent,
+    WeatherComponent
   ],
   imports: [
     AngularFontAwesomeModule,

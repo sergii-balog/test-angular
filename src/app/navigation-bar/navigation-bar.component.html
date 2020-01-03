@@ -61,6 +61,12 @@
       >
       <a
         class="nav-item nav-link"
+        routerLink="/weather"
+        routerLinkActive="active"
+        >Weather</a
+      >
+      <a
+        class="nav-item nav-link"
         routerLink="/material-test"
         routerLinkActive="active"
         >Material Test</a
@@ -81,6 +87,13 @@
       >
       <div class="nav-item nav-link">
         <div class="badge badge-info">{{ count | async }}</div>
+      </div>
+      <div class="nav-item nav-link" *ngIf="weather">
+        <img
+          style="width: 25px; background-color: white;"
+          [src]="weather.iconUrl"
+          [title]="weather.title"
+        />
       </div>
     </div>
     <div class="navbar-nav">

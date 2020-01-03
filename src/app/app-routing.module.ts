@@ -18,6 +18,7 @@ import { UsersComponent } from "./users/users.component";
 import { AccessDeniedComponent } from "./access-denied/access-denied.component";
 import { NotFoundComponent } from "./not-found/not-found.component";
 import { SignalrTestComponent } from "./signalr-test/signalr-test.component";
+import { WeatherComponent } from "./weather/weather.component";
 
 const routes: Routes = [
   {
@@ -34,6 +35,7 @@ const routes: Routes = [
   { path: "redux-test", component: ReduxTestComponent },
   { path: "signalr-test", component: SignalrTestComponent },
   { path: "login", component: LoginFormComponent },
+  { path: "weather", component: WeatherComponent },
   {
     path: "new-idea",
     component: IdeaFormComponent,

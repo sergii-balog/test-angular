@@ -1,0 +1,16 @@
+<div *ngIf="condition">Condition: <img [src]="condition.iconUrl" /></div>
+<form #weatherForm="ngForm" (ngSubmit)="updateCondition(conditionSelect.value)">
+  New condition:
+  <select ngModel #conditionSelect="ngModel" name="conditionSelect">
+    <option
+      *ngFor="let condition of service.conditions"
+      [value]="condition.title"
+      >{{ condition.title }}</option
+    >
+  </select>
+  <div>
+    <button class="btn btn-primary">
+      Update
+    </button>
+  </div>
+</form>

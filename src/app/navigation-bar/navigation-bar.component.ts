@@ -4,6 +4,7 @@ import { Router } from "@angular/router";
 import { select, NgRedux } from "@angular-redux/store";
 import { IAppState } from "../redux/store";
 import { Observable } from "rxjs";
+import { WeatherService, WeatherCondition } from "../services/weather.service";
 
 @Component({
   selector: "navigation-bar",
@@ -13,15 +14,21 @@ import { Observable } from "rxjs";
 export class NavigationBarComponent implements OnInit {
   @select() count: Observable<number>;
   authService: AuthService;
+  weather: WeatherCondition;
   constructor(
     private ngRedux: NgRedux<IAppState>,
     private router: Router,
+    private weatherService: WeatherService,
     private service: AuthService
   ) {
     this.authService = service;
   }
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.weatherService.getSubscription().subscribe(x => {
+      this.weather = x;
+    });
+  }
   public userName() {
     if (this.authService.currentUser) {
       return this.authService.currentUser.fullName;
