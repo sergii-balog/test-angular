@@ -12,31 +12,43 @@ export interface WeatherCondition {
 export class WeatherService {
   public conditions: WeatherCondition[] = [
     {
-      title: "clear sky",
+      title: "Clear Sky",
       iconUrl: "http://openweathermap.org/img/wn/01d.png"
     },
     {
-      title: "few clouds",
+      title: "Few Clouds",
       iconUrl: "http://openweathermap.org/img/wn/02d.png"
     },
     {
-      title: "scattered clouds",
+      title: "Scattered Clouds",
       iconUrl: "http://openweathermap.org/img/wn/03d.png"
     },
     {
-      title: "broken clouds",
+      title: "Broken Clouds",
       iconUrl: "http://openweathermap.org/img/wn/04d.png"
     },
     {
-      title: "shower rain",
+      title: "Shower Rain",
       iconUrl: "http://openweathermap.org/img/wn/09d.png"
     },
     {
-      title: "rain",
+      title: "Rain",
       iconUrl: "http://openweathermap.org/img/wn/10d.png"
+    },
+    {
+      title: "Thunderstorm",
+      iconUrl: "http://openweathermap.org/img/wn/11d.png"
+    },
+    {
+      title: "Snow",
+      iconUrl: "http://openweathermap.org/img/wn/13d.png"
+    },
+    {
+      title: "Mist",
+      iconUrl: "http://openweathermap.org/img/wn/50d.png"
     }
   ];
-  subject: Subject;
+  subject: Subject<WeatherCondition>;
 
   constructor() {
     this.subject = new Subject();

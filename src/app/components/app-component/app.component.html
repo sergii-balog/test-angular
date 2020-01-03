@@ -1,0 +1,18 @@
+<link
+  [href]="sanitizer.bypassSecurityTrustResourceUrl(theme)"
+  rel="stylesheet"
+/>
+<button (click)="changeTheme()">Change theme</button>
+<span class="ml-3" *ngIf="weather">
+  <img
+    style="width: 25px; background-color: white;"
+    [src]="weather.iconUrl"
+    [title]="weather.title"
+  />
+</span>
+<div class="p-2">
+  <navigation-bar></navigation-bar>
+  <div class="p-3">
+    <router-outlet></router-outlet>
+  </div>
+</div>
