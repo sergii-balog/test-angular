@@ -47,7 +47,7 @@ export class DynamicFormDisplayComponent implements AfterViewInit {
       label: "Submit",
       name: "submit",
       type: "button",
-      cssClass: "btn btn-primary"
+      cssClass: "btn btn-primary px-5"
     }
   ];
 
