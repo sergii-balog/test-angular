@@ -1,0 +1,18 @@
+<div class="form-group" [formGroup]="group">
+  <label [for]="config.name">{{ config.label }}</label>
+  <input
+    type="text"
+    [attr.placeholder]="config.placeholder"
+    [formControlName]="config.name"
+    [id]="config.name"
+    class="form-control"
+  />
+</div>
+<div class="alert alert-danger" *ngIf="control.touched && !control.valid">
+  <div *ngIf="control.errors.required">
+    This field is required
+  </div>
+  <div *ngIf="control.errors.minlength">
+    Min length for this control is {{ control.errors.minlength.requiredLength }}
+  </div>
+</div>

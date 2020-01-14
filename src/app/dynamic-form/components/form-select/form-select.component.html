@@ -1,0 +1,18 @@
+<div class="form-group" [formGroup]="group">
+  <label [for]="config.name">{{ config.label }}</label>
+  <select
+    [formControlName]="config.name"
+    [id]="config.name"
+    class="form-control"
+  >
+    <option value="">{{ config.placeholder }}</option>
+    <option *ngFor="let option of config.options">
+      {{ option }}
+    </option>
+  </select>
+</div>
+<div class="alert alert-danger" *ngIf="control.touched && !control.valid">
+  <div *ngIf="control.errors.required">
+    This field is required
+  </div>
+</div>

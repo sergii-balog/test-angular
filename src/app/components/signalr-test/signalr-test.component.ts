@@ -66,7 +66,6 @@ export class SignalrTestComponent implements OnInit, OnDestroy {
     } catch (err) {
       throw new AppClientError("Can't connect to SignalR", err);
     }
-
     this.connection.on(
       "BroadcastMessage",
       (type: string, title: string, text: string) =>

@@ -20,6 +20,7 @@ import { WeatherComponent } from "../components/weather/weather.component";
 import { ZipperLikeComponent } from "../components/zipper-like/zipper-like.component";
 import { AdminGuard } from "../services/admin-guard.service";
 import { AuthGuard } from "../services/auth-guard.service";
+import { DynamicFormDisplayComponent } from "../components/dynamic-form/dynamic-form.component";
 
 const routes: Routes = [
   {
@@ -37,6 +38,7 @@ const routes: Routes = [
   { path: "signalr-test", component: SignalrTestComponent },
   { path: "login", component: LoginFormComponent },
   { path: "weather", component: WeatherComponent },
+  { path: "dynamic-form", component: DynamicFormDisplayComponent },
   {
     path: "new-idea",
     component: IdeaFormComponent,

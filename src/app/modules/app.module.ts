@@ -15,6 +15,7 @@ import { BlogArticleComponent } from "../components/blog-article/blog-article.co
 import { BlogComponent } from "../components/blog/blog.component";
 import { ChangePasswordFormComponent } from "../components/change-password-form/change-password-form.component";
 import { CourseFormComponent } from "../components/course-form/course-form.component";
+import { DynamicFormDisplayComponent } from "../components/dynamic-form/dynamic-form.component";
 import { FormsPageComponent } from "../components/forms-page/forms-page.component";
 import { GithubFollowersComponent } from "../components/github-followers/github-followers.component";
 import { HomePageComponent } from "../components/home-page/home-page.component";
@@ -32,6 +33,7 @@ import { UsersComponent } from "../components/users/users.component";
 import { WeatherComponent } from "../components/weather/weather.component";
 import { ZipperLikeComponent } from "../components/zipper-like/zipper-like.component";
 import { ZippyComponent } from "../components/zippy/zippy.component";
+import { DynamicFormModule } from "../dynamic-form/dynamic-form.module";
 import { ShortStringPipe } from "../pipes/short-string.pipe";
 import { rootReducer } from "../redux/reducers";
 import { IAppState, initialApplicationState } from "../redux/store";
@@ -66,7 +68,8 @@ import { MdComponentsModule } from "./md-components.module";
     ReduxTestComponent,
     MaterialTestComponent,
     SignalrTestComponent,
-    WeatherComponent
+    WeatherComponent,
+    DynamicFormDisplayComponent
   ],
   imports: [
     AngularFontAwesomeModule,
@@ -79,7 +82,8 @@ import { MdComponentsModule } from "./md-components.module";
     NgReduxModule,
     MdComponentsModule,
     KendoComponentsModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    DynamicFormModule
   ],
   providers: [
     { provide: ErrorHandler, useClass: AppErrorHandler },
