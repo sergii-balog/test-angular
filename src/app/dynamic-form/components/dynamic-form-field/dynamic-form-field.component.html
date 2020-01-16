@@ -16,6 +16,9 @@
 <ng-container *ngIf="this.config.type === 'radio'">
   <form-radio [config]="config" [group]="group"></form-radio>
 </ng-container>
+<ng-container *ngIf="this.config.type === 'date'">
+  <form-date [config]="config" [group]="group"></form-date>
+</ng-container>
 <ng-container *ngIf="!this.isTypeValid()">
   <div class="text-danger">Invalid type used</div>
 </ng-container>

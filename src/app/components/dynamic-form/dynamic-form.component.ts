@@ -91,7 +91,7 @@ export class DynamicFormDisplayComponent implements OnInit {
       },
       {
         type: "radio",
-        label: "Allovances currency",
+        label: "Allowances currency",
         name: "currency",
         options: [
           { text: "US Dollars", value: "USD" },
@@ -101,6 +101,14 @@ export class DynamicFormDisplayComponent implements OnInit {
         description:
           "Please provide currency for allowances, depending on visiting country",
         validation: [Validators.required]
+      },
+      {
+        type: "date",
+        label: "Business trip date",
+        name: "tripDate",
+        placeholder: "yyyy-mm-dd",
+        validation: [Validators.required],
+        description: "Please provide the date of your trip"
       },
       {
         type: "checkbox",

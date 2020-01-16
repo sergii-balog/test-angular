@@ -18,7 +18,8 @@ export class DynamicFormFieldComponent implements Field {
     "checkbox",
     "textarea",
     "checkboxGroup",
-    "radio"
+    "radio",
+    "date"
   ];
 
   constructor() {}

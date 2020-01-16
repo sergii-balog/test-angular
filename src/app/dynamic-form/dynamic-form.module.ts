@@ -1,6 +1,7 @@
 import { CommonModule } from "@angular/common";
 import { NgModule } from "@angular/core";
 import { ReactiveFormsModule } from "@angular/forms";
+import { NgbModule } from "@ng-bootstrap/ng-bootstrap";
 
 import { MdComponentsModule } from "./../modules/md-components.module";
 import { DynamicFormFieldComponent } from "./components/dynamic-form-field/dynamic-form-field.component";
@@ -8,6 +9,7 @@ import { DynamicFormComponent } from "./components/dynamic-form/dynamic-form.com
 import { FormButtonComponent } from "./components/form-button/form-button.component";
 import { FormCheckboxGroupComponent } from "./components/form-checkbox-group/form-checkbox-group.component";
 import { FormCheckboxComponent } from "./components/form-checkbox/form-checkbox.component";
+import { FormDateComponent } from "./components/form-date/form-date.component";
 import { FormInputComponent } from "./components/form-input/form-input.component";
 import { FormRadioComponent } from "./components/form-radio/form-radio.component";
 import { FormSelectComponent } from "./components/form-select/form-select.component";
@@ -15,7 +17,8 @@ import { FormTextareaComponent } from "./components/form-textarea/form-textarea.
 import { DynamicFieldDirective } from "./directives/dynamic-field.directive";
 
 @NgModule({
-  imports: [CommonModule, ReactiveFormsModule, MdComponentsModule],
+  imports: [CommonModule, ReactiveFormsModule, MdComponentsModule, NgbModule],
+
   declarations: [
     DynamicFieldDirective,
     DynamicFormComponent,
@@ -24,6 +27,7 @@ import { DynamicFieldDirective } from "./directives/dynamic-field.directive";
     FormSelectComponent,
     FormCheckboxComponent,
     FormTextareaComponent,
+    FormDateComponent,
     FormCheckboxGroupComponent,
     DynamicFormFieldComponent,
     FormRadioComponent

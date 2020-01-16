@@ -1,0 +1,36 @@
+<div class="form-group" [formGroup]="group">
+  <label [for]="config.name">{{ config.label }}</label>
+  <div class="input-group">
+    <input
+      type="text"
+      [attr.placeholder]="config.placeholder"
+      [formControlName]="config.name"
+      [id]="config.name"
+      [name]="config.name"
+      class="form-control"
+      [ngClass]="getIsInvalidClass(control)"
+      ngbDatepicker
+      #d="ngbDatepicker"
+      [displayMonths]="2"
+      [showWeekNumbers]="true"
+      (click)="d.toggle()"
+    />
+    <div class="input-group-append">
+      <button
+        class="btn btn-outline-secondary"
+        (click)="d.toggle()"
+        type="button"
+      >
+        <i class="fa fa-calendar"></i>
+      </button>
+    </div>
+  </div>
+  <small class="form-text text-muted" *ngIf="config.description">
+    {{ config.description }}
+  </small>
+</div>
+<div class="alert alert-danger" *ngIf="control.touched && !control.valid">
+  <div *ngIf="control.errors.required">
+    This field is required
+  </div>
+</div>
