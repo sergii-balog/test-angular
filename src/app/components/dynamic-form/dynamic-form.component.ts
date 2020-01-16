@@ -13,7 +13,7 @@ import Swal from "sweetalert2";
 })
 export class DynamicFormDisplayComponent implements OnInit {
   formConfig: FormConfig = {
-    title: "New Order",
+    title: "<i class='fa fa-file'></i> New Order",
     description: "Please fill all requred information to place an order",
     showCancellButton: true
   };

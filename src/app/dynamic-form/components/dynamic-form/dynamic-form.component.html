@@ -1,7 +1,7 @@
 <form class="dynamic-form" [formGroup]="form" (submit)="handleSubmit($event)">
   <div class="card m-2">
     <div class="card-header">
-      <h5>{{ formConfig.title }}</h5>
+      <h5 [innerHTML]="formConfig.title"></h5>
       <small class="form-text text-muted" *ngIf="formConfig.description">
         {{ formConfig.description }}
       </small>
