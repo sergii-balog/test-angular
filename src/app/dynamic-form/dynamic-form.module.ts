@@ -28,14 +28,6 @@ import { DynamicFieldDirective } from "./directives/dynamic-field.directive";
     DynamicFormFieldComponent,
     FormRadioComponent
   ],
-  exports: [DynamicFormComponent],
-  entryComponents: [
-    FormButtonComponent,
-    FormInputComponent,
-    FormSelectComponent,
-    FormCheckboxComponent,
-    FormTextareaComponent,
-    FormCheckboxGroupComponent
-  ]
+  exports: [DynamicFormComponent]
 })
 export class DynamicFormModule {}
