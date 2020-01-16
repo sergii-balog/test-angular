@@ -6,11 +6,11 @@ import { Field } from "../../models/field";
 import { FieldConfig } from "../../models/field-config";
 
 @Component({
-  selector: "form-input",
-  templateUrl: "./form-input.component.html",
-  styleUrls: ["./form-input.component.css"]
+  selector: "form-checkbox",
+  templateUrl: "./form-checkbox.component.html",
+  styleUrls: ["./form-checkbox.component.css"]
 })
-export class FormInputComponent extends FormElementBase implements Field {
+export class FormCheckboxComponent extends FormElementBase implements Field {
   @Input() config: FieldConfig;
   @Input() group: FormGroup;
 

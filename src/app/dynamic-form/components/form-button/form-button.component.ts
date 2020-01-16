@@ -1,4 +1,4 @@
-import { Component } from "@angular/core";
+import { Component, Input } from "@angular/core";
 import { FormGroup } from "@angular/forms";
 
 import { Field } from "../../models/field";
@@ -10,8 +10,8 @@ import { FieldConfig } from "../../models/field-config";
   styleUrls: ["./form-button.component.css"]
 })
 export class FormButtonComponent implements Field {
-  config: FieldConfig;
-  group: FormGroup;
+  @Input() config: FieldConfig;
+  @Input() group: FormGroup;
 
   get control() {
     return this.group.controls[this.config.name];

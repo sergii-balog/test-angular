@@ -1,10 +1,12 @@
 <div class="app">
   <dynamic-form
-    [config]="config"
-    #form="dynamicForm"
+    [formConfig]="formConfig"
+    [fieldsConfig]="fieldsConfig"
+    #formComponent="dynamicForm"
     (submitted)="submit($event)"
+    (cancelled)="cancell($event)"
   >
   </dynamic-form>
-  {{ form.valid }}
-  {{ form.value | json }}
+  {{ formComponent.valid }}
+  {{ formComponent.value | json }}
 </div>

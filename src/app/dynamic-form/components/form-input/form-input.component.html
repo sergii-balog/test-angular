@@ -5,8 +5,13 @@
     [attr.placeholder]="config.placeholder"
     [formControlName]="config.name"
     [id]="config.name"
+    [name]="config.name"
     class="form-control"
+    [ngClass]="getIsInvalidClass(control)"
   />
+  <small class="form-text text-muted" *ngIf="config.description">
+    {{ config.description }}
+  </small>
 </div>
 <div class="alert alert-danger" *ngIf="control.touched && !control.valid">
   <div *ngIf="control.errors.required">

@@ -1,0 +1,23 @@
+<div class="form-group" [formGroup]="group" *ngIf="config.options">
+  <label [for]="config.name">{{ config.label }}</label>
+  <div class="form-check" *ngFor="let option of config.options; let i = index">
+    <input
+      class="form-check-input"
+      type="checkbox"
+      [id]="config.name + i"
+      (change)="optionsChange(option.value, $event.target.checked)"
+      [checked]="isOptionSelected(option.value)"
+    />
+    <label class="form-check-label" [for]="config.name + i">
+      {{ option.text }}
+    </label>
+  </div>
+  <small class="form-text text-muted" *ngIf="config.description">
+    {{ config.description }}
+  </small>
+</div>
+<div class="alert alert-danger" *ngIf="control.touched && !control.valid">
+  <div *ngIf="control.errors.required">
+    This field is required
+  </div>
+</div>

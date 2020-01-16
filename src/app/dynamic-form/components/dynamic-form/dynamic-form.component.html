@@ -1,9 +1,35 @@
 <form class="dynamic-form" [formGroup]="form" (submit)="handleSubmit($event)">
-  <ng-container
-    *ngFor="let field of config"
-    dynamicField
-    [config]="field"
-    [group]="form"
-  >
-  </ng-container>
+  <div class="card m-2">
+    <div class="card-header">
+      <h5>{{ formConfig.title }}</h5>
+      <small class="form-text text-muted" *ngIf="formConfig.description">
+        {{ formConfig.description }}
+      </small>
+    </div>
+    <div class="card-body bg-light">
+      <mat-spinner
+        style="margin:0 auto;"
+        mode="indeterminate"
+        *ngIf="fieldsConfig.length < 1"
+      ></mat-spinner>
+      <dynamic-field
+        [config]="field"
+        [group]="form"
+        *ngFor="let field of fieldsConfig"
+      ></dynamic-field>
+    </div>
+    <div class="card-footer text-right">
+      <button class="btn btn-primary px-5" [disabled]="fieldsConfig.length < 1">
+        Submit
+      </button>
+      <button
+        type="button"
+        class="btn btn-secondary px-5 ml-5"
+        *ngIf="formConfig.showCancellButton"
+        (click)="handleCancell($event)"
+      >
+        Cancell
+      </button>
+    </div>
+  </div>
 </form>
