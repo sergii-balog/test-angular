@@ -10,11 +10,4 @@ import { FieldConfig } from "../../models/field-config";
   templateUrl: "./form-date.component.html",
   styleUrls: ["./form-date.component.css"]
 })
-export class FormDateComponent extends FormElementBase implements Field {
-  @Input() config: FieldConfig;
-  @Input() group: FormGroup;
-
-  get control() {
-    return this.group.controls[this.config.name];
-  }
-}
+export class FormDateComponent extends FormElementBase {}

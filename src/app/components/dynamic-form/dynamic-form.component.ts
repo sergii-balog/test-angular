@@ -108,7 +108,8 @@ export class DynamicFormDisplayComponent implements OnInit {
         name: "tripDate",
         placeholder: "yyyy-mm-dd",
         validation: [Validators.required],
-        description: "Please provide the date of your trip"
+        description: "Please provide the date of your trip",
+        value:{month:2,year:2020, day:19}
       },
       {
         type: "checkbox",

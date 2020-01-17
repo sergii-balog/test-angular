@@ -1,22 +1,14 @@
-import { Component, Input } from "@angular/core";
-import { FormGroup, FormControl, FormArray } from "@angular/forms";
+import { Component } from "@angular/core";
+import { FormArray, FormControl } from "@angular/forms";
 
-import { Field } from "../../models/field";
-import { FieldConfig } from "../../models/field-config";
+import { FormElementBase } from "../../helpers/form-element-base";
 
 @Component({
   selector: "form-checkbox-group",
   templateUrl: "./form-checkbox-group.component.html",
   styleUrls: ["./form-checkbox-group.component.css"]
 })
-export class FormCheckboxGroupComponent implements Field {
-  @Input() config: FieldConfig;
-  @Input() group: FormGroup;
-
-  get control() {
-    return this.group.controls[this.config.name];
-  }
-
+export class FormCheckboxGroupComponent extends FormElementBase {
   optionsChange(value: string, isChecked: boolean) {
     const checkboxArray = this.control as FormArray;
     if (isChecked) {
