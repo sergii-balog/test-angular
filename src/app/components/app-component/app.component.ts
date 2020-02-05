@@ -1,6 +1,9 @@
 import { Component, OnInit } from "@angular/core";
 import { DomSanitizer } from "@angular/platform-browser";
-import { WeatherCondition, WeatherService } from "../../services/weather.service";
+import {
+  WeatherCondition,
+  WeatherService
+} from "../../services/weather.service";
 
 @Component({
   selector: "app-root",
@@ -23,11 +26,29 @@ export class AppComponent implements OnInit {
   }
   changeTheme() {
     if (this.theme === "/assets/themes/1.css") {
-      this.theme = "/assets/themes/2.css";
+      this.loadStyle("/assets/themes/2.css");
     } else if (this.theme === "/assets/themes/2.css") {
-      this.theme = "/assets/themes/3.css";
+      this.loadStyle("/assets/themes/3.css");
     } else {
-      this.theme = "/assets/themes/1.css";
+      this.loadStyle("/assets/themes/1.css");
+    }
+  }
+  loadStyle(stylePath: string) {
+    this.theme = stylePath;
+    const head = window.document.getElementsByTagName("head")[0];
+
+    const themeLink = window.document.getElementById(
+      "client-theme"
+    ) as HTMLLinkElement;
+    if (themeLink) {
+      themeLink.href = stylePath;
+    } else {
+      const style = window.document.createElement("link");
+      style.id = "client-theme";
+      style.rel = "stylesheet";
+      style.href = `${stylePath}`;
+
+      head.appendChild(style);
     }
   }
 }
